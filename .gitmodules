@@ -1,0 +1,3 @@
+[submodule "themes/nofancy"]
+	path = themes/nofancy
+	url = https://github.com/kennyalive/nofancy.git
