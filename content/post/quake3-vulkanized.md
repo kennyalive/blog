@@ -14,7 +14,7 @@ Last week I made a new release of the [Quake-III-Arena-Kenny-Edition](https://gi
 
 * Implement all Quake 3 rendering features including customization options and debug features, even those that are rarely used.
 
-![Vulkan backend in action](https://cdn-images-1.medium.com/max/2000/1*Zy43RO5id8OPvnYnKWbxRA.jpeg)
+![Vulkan backend in action](/q3-kenny-ed/main.jpeg)
 <p style="text-align: center;">*Vulkan backend in action*</p>
 
 ### Time
@@ -103,16 +103,16 @@ One of the goals of the entire project is to preserve original look and feel and
 
 The tool that I used to compare output from both backends is a *twin mode* that is enabled by the `r_twinMode` cvar. In this mode the renderer creates two windows that display both OpenGL and Vulkan outputs side-by-side.
 
-![Early stages of development. The difference is obvious.](https://cdn-images-1.medium.com/max/2000/1*ER6j9uL7yDbOo1zlNF8Z2Q.jpeg)
+![Early stages of development. The difference is obvious.](/q3-kenny-ed/early-dev.jpeg)
 <p style="text-align: center;">*Early stages of development. The difference is obvious.*</p>
 
-![Twin mode allowed to detect the difference when stencil shadows are active (blood in front of the doom guy)](https://cdn-images-1.medium.com/max/2000/1*UiSxDH2yzKg4kC3TAyQrQg.jpeg)
+![Twin mode allowed to detect the difference when stencil shadows are active (blood in front of the doom guy)](/q3-kenny-ed/bug-detection.jpeg)
 <p style="text-align: center;">*Twin mode allowed to detect the difference when stencil shadows are active (blood in front of the doom guy)*</p>
 
-![Debug surfaces visualization (r_debugSurface 1)](https://cdn-images-1.medium.com/max/2000/1*fZUxu8mRZdYEKv8Sb4cYAQ.jpeg)
+![Debug surfaces visualization (r_debugSurface 1)](/q3-kenny-ed/debug.jpeg)
 <p style="text-align: center;">*Debug surfaces visualization (r_debugSurface 1)*</p>
 
-![Screenshot from the release build. More or less the same pixels!](https://cdn-images-1.medium.com/max/2000/1*MWqnS9_c4V6sH-2TGEokZQ.jpeg)
+![Screenshot from the release build. More or less the same pixels!](/q3-kenny-ed/release.jpeg)
 <p style="text-align: center;">*Screenshot from the release build. More or less the same pixels!*</p>
 
 ### Conclusion
