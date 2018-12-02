@@ -1,7 +1,6 @@
 ---
 title: "Quake 3 Vulkanized"
 date: 2017-06-06
-draft: true
 ---
 
 # Quake 3 Vulkanized
@@ -51,9 +50,9 @@ Last week I made a new release of the [Quake-III-Arena-Kenny-Edition](https://gi
 
 *General setup.* Single command buffer that records all the commands. Single render pass which specifies color and depth-stencil attachment. Stencil buffer is used to render Q3’s stencil shadows (cg_shadows=2).
 
-*Geometry.* Quake 3 renderer stores geometry data for each draw call in `tess.xyz` and `tess.indexes` arrays. OpenGL backend calls `qglDrawElements` to feed this geometry to GPU. Vulkan backend appends this data to geometry buffers that are bound to host visible memory chunk. At the end of the frame when command buffer is submitted to the queue the geometry buffers contain all the geometry data to render the frame. Typically up to 500Kb of vertex data is copied to the vertex buffer and up to 100Kb of index data is copied to the index buffer (per frame).
+*Geometry.* Quake 3 renderer prepares geometry data for each draw call in `tess.xyz` and `tess.indexes` arrays. OpenGL backend calls `qglDrawElements` to feed this geometry to the GPU. Vulkan backend appends this data to geometry buffers that are bound to host visible memory chunk. At the end of the frame when command buffer is submitted to the queue the geometry buffers contain all the geometry data to render the frame. Typically up to 500Kb of vertex data is copied to the vertex buffer and up to 100Kb of index data is copied to the index buffer per frame.
 
-*Descriptor sets.* For each image used by the renderer separate descriptor set is created. Each descriptor set contains single descriptor (combined image sampler). For each draw call either one or two (if lightmap is available) descriptor sets are bound. Descriptor sets initialized only one when they are created. There are no descriptor set updates during frame.
+*Descriptor sets.* For each image used by the renderer separate descriptor set is created. Each descriptor set contains single descriptor (combined image sampler). For each draw call either one or two (if lightmap is available) descriptor sets are bound. Descriptor sets are updated only once during initialization. There are no descriptor set updates during frame.
 
 *Per-primitive uniform data.* Vulkan guarantees that minimum size of push constants range is at least 128 bytes. To render ordinary view we use 64 bytes to specify mvp transform. For portaled/mirrored views additional 64 byte are used to specify eye transform and clipping plane.
 
@@ -67,7 +66,7 @@ Last week I made a new release of the [Quake-III-Arena-Kenny-Edition](https://gi
 
 ### Code
 
-vk.h* *provides interface that brings Vulkan support to Q3 renderer. The interface is quite concise and consists of a dozen of functions that can be divided into 3 category: initialization functions, resource management functions and rendering setup functions.
+`vk.h` provides interface that brings Vulkan support to Q3 renderer. The interface is quite concise and consists of a dozen of functions that can be divided into 3 categories: initialization functions, resource management functions and rendering setup functions.
 
 *Initialization:*
 
@@ -85,13 +84,13 @@ vk.h* *provides interface that brings Vulkan support to Q3 renderer. The interfa
 
 *Rendering setup:*
 
-* `vk_clear_attachments` — clears framebuffer’s attachments
+* `vk_clear_attachments` — clears framebuffer’s attachments.
 
-* `vk_bind_geometry` — called when we start drawing new geometry
+* `vk_bind_geometry` — is called when we start drawing new geometry.
 
-* `vk_shade_geometry` — called to shade geometry specified with vk_bind_geometry. Can be called multiple times for Q3’s multi-stage shaders.
+* `vk_shade_geometry` — is called to shade geometry specified with `vk_bind_geometry`. Can be called multiple times for Q3’s multi-stage shaders.
 
-* `vk_begin_frame`/`vk_end_frame` — frame setup
+* `vk_begin_frame`/`vk_end_frame` — frame setup.
 
 * `vk_read_pixels` — takes a screenshot.
 
@@ -101,7 +100,7 @@ We have 13 functions in total to provide foundation necessary to fuel full-featu
 
 One of the goals of the entire project is to preserve original look and feel and gameplay of the original Quake III Arena. On the graphics side this means that Vulkan backend should provide the same output as native OpenGL-based.
 
-The tool that I used to compare output from both backends is a *twin mode* that is enabled by the `r_twinMode` cvar. In this mode the renderer creates two windows that display both OpenGL and Vulkan outputs side-by-side.
+The tool that I used to compare the outputs from both backends is a *twin mode* that can be enabled by the `r_twinMode` cvar. In this mode the renderer creates two windows that display both OpenGL and Vulkan outputs side-by-side.
 
 ![Early stages of development. The difference is obvious.](/q3-kenny-ed/early-dev.jpeg)
 <p style="text-align: center;">*Early stages of development. The difference is obvious.*</p>
@@ -117,8 +116,8 @@ The tool that I used to compare output from both backends is a *twin mode* that 
 
 ### Conclusion
 
-Quake 3 is one of my favorite games and I had a very positive experience working with its code. Q3 codebase is of high quality. Its complexity corresponds to the provided functionality. Modern C++ codebases, overwhelmed with abstractions and with poor performance characteristics, are just terrible.
+Quake 3 is one of my favorite games and I had a very positive experience working with its code. Q3 codebase is of high quality. Its complexity corresponds to the provided functionality.
 
-Vulkan is good. I like its explicit nature — if you have to do something it’s hard to forget to do this. Validation layers are really cool — good example of how to write good warning/error messages. Also I don’t remember if I had a black screen at some point (remember OpenGL?). On the other side I had to restart my PC several times (AMD drivers) when validation layers did not catch invalid call. Yes, thin drivers.
+Vulkan is good. I like its explicit nature — if you have to do something it’s hard to forget to do this. Validation layers is a great example of how to write good warning/error messages. Also I don’t remember if I had a black screen at some point (remember OpenGL?). On the other side I had to restart my PC several times (AMD drivers) when validation layers did not catch invalid call. Thin drivers?
 
 `/r_renderAPI 1`, `/vid_restart`, frag!
