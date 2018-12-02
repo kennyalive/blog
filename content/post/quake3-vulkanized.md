@@ -3,8 +3,6 @@ title: "Quake 3 Vulkanized"
 date: 2017-06-06
 ---
 
-# Quake 3 Vulkanized
-
 Last week I made a new release of the [Quake-III-Arena-Kenny-Edition](https://github.com/kennyalive/Quake-III-Arena-Kenny-Edition) project. The major feature of this release is Vulkan rendering support. Here I present some summary information.
 
 ### Goals
