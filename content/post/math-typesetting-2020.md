@@ -6,11 +6,11 @@ markup: mmark
 enable_math: true
 ---
 
-This page is a playground I used to learn how to incorporate math formulae into a digital content. 
+Some time ago I made a derivation of how reflected light is distributed under certain conditions and posted a photo of the derivation online. Being unable to compete with cute animals that piece of content nevertheless led to an idea to learn how to typeset math formulas in a digital form. I used this page as a playground to accomplish this goal and also to repeat the derivation.
 
-As of 2020 \\(\TeX\\) notation is quite popular. There are few options how to use it on the web. \\(\KaTeX\\) JavaScript library is a solution that is used here.
+As of 2020 the \\(\TeX\\) typesetting language is a viable option. There are few options how to use it on the web. \\(\KaTeX\\) JavaScript library is a solution that is used here.
 
-At first I will describe essensial software configuration and provide a few examples of the math notation in a raw form. For the most part this write-up is an example from computer graphics which derives macrosurface BSDF from a microsurface description.
+At first I will describe software configuration that enabled math content on this site. After that there are few examples of how math notation is specified. Then, the main part follows with a derivation of macrosurface BSDF from a microsurface description.
 
 ### Software configuration
 
