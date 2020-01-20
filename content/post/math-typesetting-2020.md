@@ -73,7 +73,6 @@ Where \\(f_s\\) and \\(f_s^m\\) are the macrosurface and the microsurface BSDFs 
 We can get the above formula by computing the *radiant flux* due to reflected or refracted light. Radiant flux is how the *power* is called in radiometry, i.e. the amount of energy the light carries through the region of space per unit time. We are going to compute the flux twice. At first by using the macrosurface BSDF and the second time the same quantity will be computed based on the microsurface BSDF. Then we can get the equation \\((1)\\) by equating both results. The wavelength dependency of radiometric quantities is ommited here for simplicity. In the calculations that follow we observe the incoming and outgoing light in a narrow set a directions defined by the differential solid angles \\(d\omega_i\\) and \\(d\omega_o\\) correspondingly, which also define directions \\(\bold i\\) and \\(\bold o\\).
 
 ###### a) Flux computation according to macrosurface BSDF $$f_s$$
-
 Let's start by calculating irradiance due to the light from solid angle \\(d\omega_i\\):
 \\[ dE =L_i d\omega_i \lvert(\bold n \cdot \bold i)\rvert \\]
 
@@ -90,34 +89,28 @@ Outgoing flux from differential surface area \\(dA\\):
    d\omega_i d\omega_o dA \\]
 
 ###### b) Flux computation according to microsurface BSDF $$f_s^m$$
+Surface with microgeometry is a collection of facets of different orientation. At first we will compute outgoing flux from facets that have the same orientation \\(\bold m\\). Then the total flux is an integral over all possible facet orientations. All quantities that are computed for a subset of facets with normal \\(\bold m \\) are provided with corresponding subscript.
 
-$$
-dE_m = L_i d\omega_i (\bold m \cdot \bold i)
-$$
+Irradiance, outgoing radiance and \\(\mathcal{radiosity}\\) are computed identically to macrosurface case with a difference that we use facet's normal \\(\bold m\\) instead of \\(\bold n \\) and microsurface BSDF \\(f_s^m\\) instead of \\(f_s\\):
+\\[ dE_m = L_i d\omega_i \lvert(\bold m \cdot \bold i)\rvert \\]
+\\[ dL_m = f_s^m(\bold i, \bold o, \bold m) dE_m \\]
+\\[ dM_m = dL_m d\omega_o \lvert(\bold m \cdot \bold o)\rvert \\]
 
-$$
-dL_m = f_s^m(\bold i, \bold o, \bold m) L_i
-   d\omega_i (\bold m \cdot \bold i)
-$$
+The total area of facets with normal \\(\bold m \\) that receive light and reflect it without self-shadowing is computed according to definitions of functions \\(D\\) and \\(G\\):
 
-$$
-   dM_m = dL_m d\omega_o (\bold m \cdot \bold o)
-   = f_s^m(\bold i, \bold o, \bold m) L_i
-   (\bold m \cdot \bold i)
-   (\bold m \cdot \bold o)
-   d\omega_i d\omega_o
-$$
+$$ dA_m = D G d\omega_{mi} dA $$
 
-$$
-   dA_m = D G d\omega_{mi} dA
-$$
+where \\(d\omega_{mi}\\) is the differential solid angle oriented along \\(\bold m\\). Outgoing flux from facets with normal \\(\bold m\\):
+\\[ d\Phi_m = dM_mdA_m \\]
 
-$$
-d\Phi = \int dM_m dA_m = \int f_s^m(\bold i, \bold o, \bold m) L_i
-   (\bold m \cdot \bold i)
-   (\bold m \cdot \bold o)
-   d\omega_i d\omega_o
-   D G dA d\omega_{mi}
+Total flux is computed by considering all facets:
+
+$$ \tag{3} d\Phi = \int d\Phi_m d\omega_{mi} =
+   \int f_s^m(\bold i, \bold o, \bold m) L_i
+   \lvert(\bold m \cdot \bold i)
+   (\bold m \cdot \bold o)\rvert
+   D G
+   d\omega_i d\omega_o dA d\omega_{mi}
 $$
 
 ###### c) Getting the result
