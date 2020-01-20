@@ -70,40 +70,28 @@ In the well known computer graphics paper *"Microfacet Models for Refraction thr
 
 Where \\(f_s\\) and \\(f_s^m\\) are the macrosurface and the microsurface BSDFs correspondingly, \\(G\\) and \\(D\\) are the shadowing-masking and the normal distribution functions as specified in the microfacet model, \\(\bold i\\) is the incident light direction, \\(\bold o\\) is the outgoing light direction, \\(\bold n\\) is the macrosurface normal and \\(\bold m\\) is the microsurface normal. \\(S^2\\) denotes that integration domain is a sphere of directions.
 
-We can get the above formula by computing the *radiant flux* due to reflected or refracted light. Radiant flux is how the *power* is called in radiometry, i.e. the amount of energy the light carries through the region of space per unit time. We are going to compute this flux twice. At first by using the macrosurface BSDF and the second time the same quantity will be computed based on the microsurface BSDF. Then we can get equation \\((1)\\) by equating both results. The wavelength dependency of radiometric quantities is ommited here for simplicity. In the calculations that follow we observe the incoming and outgoing light in a narrow set a directions defined by the differential solind angles \\(d\omega_i\\) and \\(d\omega_o\\) correspondingly, which also define directions \\(\bold i\\) and \\(\bold o\\).
+We can get the above formula by computing the *radiant flux* due to reflected or refracted light. Radiant flux is how the *power* is called in radiometry, i.e. the amount of energy the light carries through the region of space per unit time. We are going to compute the flux twice. At first by using the macrosurface BSDF and the second time the same quantity will be computed based on the microsurface BSDF. Then we can get the equation \\((1)\\) by equating both results. The wavelength dependency of radiometric quantities is ommited here for simplicity. In the calculations that follow we observe the incoming and outgoing light in a narrow set a directions defined by the differential solid angles \\(d\omega_i\\) and \\(d\omega_o\\) correspondingly, which also define directions \\(\bold i\\) and \\(\bold o\\).
 
-###### Flux computation according to macrosurface BSDF $$f_s$$
+###### a) Flux computation according to macrosurface BSDF $$f_s$$
 
-Differential irradiance when considering differential angle:
+Let's start by calculating irradiance due to the light from solid angle \\(d\omega_i\\):
+\\[ dE =L_i d\omega_i \lvert(\bold n \cdot \bold i)\rvert \\]
 
-$$
-dE =L_i d\omega_i (\bold n \cdot \bold i)
-$$
+The amount of irradiance \\(dE\\) creates distribution of reflected and refracted light according to BSDF, specificially the outgoing radiance in the direction \\(\bold o \\) is:
+\\[ dL = f_s(\bold i, \bold o, \bold n) dE \\]
 
-That irradiance will be reflected according to BSDF so we have this expression for reflected radiance in the given direction:
+Having outgoing radiance we can compute the radiance exitance (another name with a nice retro tint is \\(\mathcal{radiosity}\\)) considering outgoing light in a solid angle \\(d\omega_o\\):
 
-$$
-dL = f(\bold i, \bold o, \bold n) L_i (\bold n \cdot \bold i) d\omega_i
-$$
+\\[ dM = dL d\omega_o \lvert(\bold n \cdot \bold o)\rvert \\]
 
-Reflected irradiance (radiosity):
+Outgoing flux from differential surface area \\(dA\\):
 
-$$
-dM = dL d\omega_o (\bold n \cdot \bold o) =
-   f(\bold i, \bold o, \bold n)
-   L_i (\bold n \cdot \bold i) (\bold n \cdot \bold o) d\omega_i d\omega_o
-$$
+\\[ \tag{2} d\Phi = dMdA = f_s(\bold i, \bold o, \bold n)L_i
+   \lvert(\bold n \cdot \bold i)
+   (\bold n \cdot \bold o)\rvert
+   d\omega_i d\omega_o dA \\]
 
-Reflected flux:
-
-$$
-d\Phi = f_s(\bold i, \bold o, \bold n)L_i
-   (\bold n \cdot \bold i)
-   (\bold n \cdot \bold o)
-   d\omega_i d\omega_o dA
-$$
-
-###### Flux computation according to microsurface BSDF $$f_s^m$$
+###### b) Flux computation according to microsurface BSDF $$f_s^m$$
 
 $$
 dE_m = L_i d\omega_i (\bold m \cdot \bold i)
@@ -133,5 +121,7 @@ d\Phi = \int dM_m dA_m = \int f_s^m(\bold i, \bold o, \bold m) L_i
    d\omega_i d\omega_o
    D G dA d\omega_{mi}
 $$
+
+###### c) Getting the result
 
 ![microsurface](/math-test/microsurface.png)
