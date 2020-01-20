@@ -81,11 +81,9 @@ The amount of irradiance \\(dE\\) creates distribution of reflected and refracte
 \\[ dL = f_s(\bold i, \bold o, \bold n) dE \\]
 
 Having outgoing radiance we can compute the radiance exitance (another name with a nice retro tint is \\(\mathcal{radiosity}\\)) considering outgoing light in a solid angle \\(d\omega_o\\):
-
 \\[ dM = dL d\omega_o \lvert(\bold n \cdot \bold o)\rvert \\]
 
 Outgoing flux from differential surface area \\(dA\\):
-
 \\[ \tag{2} d\Phi = dMdA = f_s(\bold i, \bold o, \bold n)L_i
    \lvert(\bold n \cdot \bold i)
    (\bold n \cdot \bold o)\rvert
