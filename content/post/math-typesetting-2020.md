@@ -97,22 +97,50 @@ Irradiance, outgoing radiance and \\(\mathcal{radiosity}\\) are computed identic
 \\[ dM_m = dL_m d\omega_o \lvert(\bold m \cdot \bold o)\rvert \\]
 
 The total area of facets with normal \\(\bold m \\) that receive light and reflect it without self-shadowing is computed according to definitions of functions \\(D\\) and \\(G\\):
+\\[ dA_m = D G d\omega_m dA \\]
 
-$$ dA_m = D G d\omega_{mi} dA $$
-
-where \\(d\omega_{mi}\\) is the differential solid angle oriented along \\(\bold m\\). Outgoing flux from facets with normal \\(\bold m\\):
+where \\(d\omega_m\\) is the differential solid angle oriented along \\(\bold m\\). Outgoing flux from facets with normal \\(\bold m\\):
 \\[ d\Phi_m = dM_mdA_m \\]
 
-Total flux is computed by considering all facets:
-
-$$ \tag{3} d\Phi = \int d\Phi_m d\omega_{mi} =
+Total flux is computed by considering all facets (integration domain is a hemisphere around macrosurface normal \\(\bold n\\)):
+\\[ \tag{3} d\Phi = \int d\Phi_m d\omega_m =
    \int f_s^m(\bold i, \bold o, \bold m) L_i
    \lvert(\bold m \cdot \bold i)
    (\bold m \cdot \bold o)\rvert
    D G
-   d\omega_i d\omega_o dA d\omega_{mi}
-$$
+   d\omega_i d\omega_o dA d\omega_m
+\\]
 
 ###### c) Getting the result
+
+By equating \\((2)\\) and \\((3)\\) and noticing that \\(d\omega_i\\), \\(d\omega_o\\), \\(dA\\) and \\(L_i\\) do not depend on the integration domain we get the desired result:
+
+\\[ f_s(\bold i, \bold o, \bold n)L_i
+   \lvert(\bold n \cdot \bold i)
+   (\bold n \cdot \bold o)\rvert
+   d\omega_i d\omega_o dA = 
+   \int f_s^m(\bold i, \bold o, \bold m) L_i
+   \lvert(\bold m \cdot \bold i)
+   (\bold m \cdot \bold o)\rvert
+   D G
+   d\omega_i d\omega_o dA d\omega_m
+\\]
+
+\\[\Downarrow\\]
+
+\\[ f_s(\bold i, \bold o, \bold n) = 
+   \underset{S^2}{\int} \bigg| \frac{\bold i \cdot \bold m }{\bold i \cdot \bold n} \bigg|
+   f_s^m(\bold i, \bold o, \bold m)
+   \bigg| \frac{\bold o \cdot \bold m }{\bold o \cdot \bold n} \bigg|
+   G(\bold i, \bold o, \bold m) D(\bold m) d\omega_m \\]
+
+That's the end of the derivation.
+
+By using specific microsurface BSDFs we can derive BSDF expressions that are commonly used in computer graphics. For example, by assuming that microfacets are optically flat surfaces with \\(f_s^m\\) of a mirror the expression \\((1)\\) is simplified to this form:
+
+\\[ f_r(\bold i, \bold o, \bold n) = \frac
+   {F(\bold i, \bold h_r) G(\bold i, \bold o, \bold h_r) D(\bold h_r)}
+   {4\lvert|\bold i \cdot \bold n\rvert \lvert|\bold o \cdot \bold n\rvert}
+ \\]
 
 ![microsurface](/math-test/microsurface.png)
