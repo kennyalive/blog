@@ -63,12 +63,12 @@ The full list of supported \\(\TeX\\) functions can be found in [KaTeX Documenta
 In the well known computer graphics paper *"Microfacet Models for Refraction through Rough Surfaces"* (Walter et al. 2007) there is a formula that shows relationship between microsurface and macrosurface BSDFs:
 
 \\[ \tag{1} f_s(\bold i, \bold o, \bold n) = 
-   \underset{S^2}{\int} \bigg| \frac{\bold i \cdot \bold m }{\bold i \cdot \bold n} \bigg|
+   \underset{H^2(\bold n)}{\int} \bigg| \frac{\bold i \cdot \bold m }{\bold i \cdot \bold n} \bigg|
    f_s^m(\bold i, \bold o, \bold m)
    \bigg| \frac{\bold o \cdot \bold m }{\bold o \cdot \bold n} \bigg|
    G(\bold i, \bold o, \bold m) D(\bold m) d\omega_m \\]
 
-Where \\(f_s\\) and \\(f_s^m\\) are the macrosurface and the microsurface BSDFs correspondingly, \\(G\\) and \\(D\\) are the shadowing-masking and the normal distribution functions as specified in the microfacet model, \\(\bold i\\) is the incident light direction, \\(\bold o\\) is the outgoing light direction, \\(\bold n\\) is the macrosurface normal and \\(\bold m\\) is the microsurface normal. \\(S^2\\) denotes that integration domain is a sphere of directions.
+Where \\(f_s\\) and \\(f_s^m\\) are the macrosurface and the microsurface BSDFs correspondingly, \\(G\\) and \\(D\\) are the shadowing-masking and the normal distribution functions as specified in the microfacet model, \\(\bold i\\) is the incident light direction, \\(\bold o\\) is the outgoing light direction, \\(\bold n\\) is the macrosurface normal and \\(\bold m\\) is the microsurface normal. \\(H^2(\bold n)\\) denotes the hemisphere of directions about a given surface normal \\(\bold n\\).
 
 We can get the above formula by computing the *radiant flux* due to reflected or refracted light. Radiant flux is how the *power* is called in radiometry, i.e. the amount of energy the light carries through the region of space per unit time. We are going to compute the flux twice. At first by using the macrosurface BSDF and the second time the same quantity will be computed based on the microsurface BSDF. Then we can get the equation \\((1)\\) by equating both results. The wavelength dependency of radiometric quantities is ommited here for simplicity. In the calculations that follow we observe the incoming and outgoing light in a narrow set a directions defined by the differential solid angles \\(d\omega_i\\) and \\(d\omega_o\\) correspondingly, which also define directions \\(\bold i\\) and \\(\bold o\\).
 
@@ -103,8 +103,8 @@ where \\(d\omega_m\\) is the differential solid angle oriented along \\(\bold m\
 \\[ d\Phi_m = dM_mdA_m \\]
 
 Total flux is computed by considering all facets (integration domain is a hemisphere around macrosurface normal \\(\bold n\\)):
-\\[ \tag{3} d\Phi = \int d\Phi_m d\omega_m =
-   \int f_s^m(\bold i, \bold o, \bold m) L_i
+\\[ \tag{3} d\Phi = \underset{H^2(\bold n)}{\int} d\Phi_m d\omega_m =
+   \underset{H^2(\bold n)}{\int} f_s^m(\bold i, \bold o, \bold m) L_i
    \lvert(\bold m \cdot \bold i)
    (\bold m \cdot \bold o)\rvert
    D G
@@ -119,7 +119,7 @@ By equating \\((2)\\) and \\((3)\\) and noticing that \\(d\omega_i\\), \\(d\omeg
    \lvert(\bold n \cdot \bold i)
    (\bold n \cdot \bold o)\rvert
    d\omega_i d\omega_o dA = 
-   \int f_s^m(\bold i, \bold o, \bold m) L_i
+   \underset{H^2(\bold n)}{\int} f_s^m(\bold i, \bold o, \bold m) L_i
    \lvert(\bold m \cdot \bold i)
    (\bold m \cdot \bold o)\rvert
    D G
@@ -129,7 +129,7 @@ By equating \\((2)\\) and \\((3)\\) and noticing that \\(d\omega_i\\), \\(d\omeg
 \\[\Downarrow\\]
 
 \\[ f_s(\bold i, \bold o, \bold n) = 
-   \underset{S^2}{\int} \bigg| \frac{\bold i \cdot \bold m }{\bold i \cdot \bold n} \bigg|
+   \underset{H^2(\bold n)}{\int} \bigg| \frac{\bold i \cdot \bold m }{\bold i \cdot \bold n} \bigg|
    f_s^m(\bold i, \bold o, \bold m)
    \bigg| \frac{\bold o \cdot \bold m }{\bold o \cdot \bold n} \bigg|
    G(\bold i, \bold o, \bold m) D(\bold m) d\omega_m \\]
