@@ -75,6 +75,9 @@ Where \\(f_s\\) and \\(f_s^m\\) are the macrosurface and the microsurface BSDFs 
 We can obtain formula \\((1)\\) by computing the *radiant flux* due to reflected or refracted light. Radiant flux is how the *power* is called in radiometry, i.e. the amount of energy the light carries through the region of space per unit time. We are going to compute the flux twice. At first by using the macrosurface BSDF and the second time the same quantity will be computed based on the microsurface BSDF. Then we can get the equation \\((1)\\) by equating both results. The wavelength dependency of radiometric quantities is ommited for simplicity. In the calculations that follow we observe the incoming and outgoing light in a narrow set a directions defined by the differential solid angles \\(d\omega_i\\) and \\(d\omega_o\\) correspondingly, which also define directions \\(\bold i\\) and \\(\bold o\\).
 
 ###### a) Flux computation according to macrosurface BSDF $$f_s$$
+
+![reflection](/math-test/reflection.png#center)
+
 Let's start by calculating irradiance due to the light from solid angle \\(d\omega_i\\):
 \\[ dE =L_i d\omega_i \lvert(\bold n \cdot \bold i)\rvert \\]
 
