@@ -6,9 +6,9 @@ markup: mmark
 enable_math: true
 ---
 
-Some time ago I made a derivation of the known formula that describes what happens to light after its interaction with a surface that has microgeometry. It was done on paper. Now it's time to learn how to typeset math formulas in a digital form. I used this page as a playground to accomplish this goal and also to repeat the derivation.
+Some time ago I made a derivation of the known formula which describes how light interacts with a surface that has microgeometry. It was done on paper and that worked fine for me. Later, I decided to learn how to typeset math formulas in a digital form. I used this page as a playground to accomplish this goal and also to repeat the derivation.
 
-As of 2020 the \\(\TeX\\) typesetting language is quite popular. There are few options how to use it on the web. \\(\KaTeX\\) JavaScript library is a solution that is used here. Another good option is *MathJax*.
+As of 2020 the \\(\TeX\\) typesetting language is quite popular. There are few options how to use it on the web. \\(\KaTeX\\) JavaScript library is a solution that is used here. Another good option is the *MathJax* library.
 
 At first, I will describe software configuration that makes my site math friendly. Then, a few examples of the math notation in a raw text form will be provided. Then, the main part will present a derivation of macrosurface BSDF from a microsurface description.
 
