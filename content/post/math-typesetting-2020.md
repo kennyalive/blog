@@ -14,10 +14,12 @@ At first, I will describe software configuration that makes my site math friendl
 
 ### Software configuration
 
-*Hugo site generator* was used to generate this site. Hugo is a program that consumes content in the form of *Markdown-formatted documents* and produces a web site - a collection of files that can be served by a web server (HTML, CSS, JavaScript, images, etc.). The site structure is specified by a *Hugo theme*. There are a lot of free themes available online.
+*Hugo site generator* was used to generate this site. Hugo is a program that consumes content in the form of *Markdown-formatted documents* and produces a web site - a collection of the files (HTML, CSS, JavaScript, images, etc.) that can be served by a web server. The site structure is specified by a *Hugo theme*. There are a lot of free themes available online.
 
-*KaTeX JavaScript library*. It renders mathematical notation. [KaTeX  Auto-render Extension](https://katex.org/docs/autorender.html) provides html snippet that should be included into html header. I had to modify my Hugo theme because that's the place where html header is defined.
+*KaTeX JavaScript library*. It renders mathematical notation. [KaTeX  Auto-render Extension](https://katex.org/docs/autorender.html) page provides html snippet that should be included into html header like this:
 ```xml
+  <!-- the head tag should be defined somewhere by the theme,
+   in the theme that I use it's in the layouts/partials/header.html file -->
   <head>
   .....
   {{ with .Params.enable_math}}
@@ -26,8 +28,8 @@ At first, I will describe software configuration that makes my site math friendl
   </head>
 ```
 
-*Front matter configuration*. Markdown document processed by Hugo should start with a front matter section that defines a metadata associated with the document. We need to add the following two properties to enable usage of KaTex library: 
-* `markup` - allows to set non-default markdown engine. We need this because default engine does not work with KaTeX.
+*Content metadata*. Markdown document processed by Hugo should start with a front matter section that defines a metadata associated with the document. We need to add the following two properties to enable usage of KaTex library: 
+* `markup` - allows to set non-default markdown engine. We need this because default engine does not work with KaTeX yet.
 * `enable_math` - our custom property which enables KaTeX library on the given page (by default it is disabled)
 
 ```
