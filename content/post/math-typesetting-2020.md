@@ -29,7 +29,7 @@ This site is an output of *Hugo site generator*. Hugo is a program that consumes
 ```
 
 *Content metadata*. Markdown document processed by Hugo should begin with a front matter section that defines a metadata associated with the document. We need to add the following two properties to enable usage of the KaTex library:
-* `markup` - allows to set non-default markdown engine. We need this because the default engine does not support KaTeX. <sup>[1](#myfootnote1)</sup>
+* `markup` - allows to set non-default markdown engine. We need this because the default engine does not support KaTeX. <sup>[1](#footnote1)</sup>
 * `enable_math` - our custom property which enables KaTeX library on the given page (by default it is disabled)
 
 ```
@@ -42,14 +42,15 @@ enable_math: true
 ```
 
 ### Math notation
-KaTeX determines what parts of the document contain math by looking for delimiters that surround math snippets. There are two math rendering modes each one is defined by a different pair of delimiters.
-* *Inline mode* delimiters are `\\(` and `\\)`. In inline mode math formulas won't break the line, for example, here is the aggigment \\(a=b+c\\) in the middle of this sentense. The corresponding markdown: `\\(a=b+c\\)`
+\\(\KaTeX\\) determines which parts of the document contain math by looking for the delimiters that surround the math snippets. There are two math rendering modes, each one is defined by a different pair of delimiters.
+* *Inline mode* delimiters are `\\(` and `\\)`. In inline mode the math formula  won't break the line, for example, here is the assigment \\(a=b+c\\) in the middle of this line produced by `\\(a=b+c\\)`
 
-* *Displayed mode* delimiters are `\\[` and `\\]`. In displayed mode the formula adds line breaks and `\\[a=b+c\\]` markdown immediately after the next simicolon is rendered like this: \\[a = b + c\\]
+* *Displayed mode* delimiters are `\\[` and `\\]` <sup>[2](#footnote2)</sup>. In displayed mode the formula adds a line break. Here is the output of `\\[a=b+c\\]` markup: \\[a = b + c\\]
 
-As shown above basic arithmetic operations has natural syntax. Here are more mathematical operations I used in BSDF derivation:
+As shown above basic arithmetic operations have a natural syntax. Here is a list of some other operations that I used in BSDF derivation:
 
 `\int`\\(\dashrightarrow \int\\) \\
+`\underset{X}{\int}` \\(\dashrightarrow \underset{X}{\int}\\) \\
 `a \cdot b`  \\(\dashrightarrow a \cdot b \\) \\
 `x^2` \\(\dashrightarrow x^2 \\) \\
 `x_i` \\(\dashrightarrow x_i \\) \\
@@ -154,4 +155,6 @@ By using specific microsurface BSDFs we can derive BSDF expressions that are com
    {4\lvert|\bold i \cdot \bold n\rvert \lvert|\bold o \cdot \bold n\rvert}
  \\]
 
-<a name="myfootnote1">1</a>: Here should be information about mmark support
+<a name="footnote1">1</a>: Here should be information about mmark support
+
+<a name="footnote2">2</a>: Write here about `$$` delimiter
