@@ -8,7 +8,7 @@ enable_math: true
 
 Some time ago I made a derivation of the known formula from the microfacet theory that shows how the reflection/refraction properties of the surface (macrosurface BSDF) depend on the reflection/refraction properties of the small facets that form the surface (microsurface BSDF). That work was done on paper. Now I decided to learn how to typeset math formulas in a digital form. I used this page as a playground to accomplish this goal and also to repeat the derivation.
 
-As of 2020 the \\(\TeX\\) typesetting language is quite popular. It provides a markup language rich enough to write even the complex multi-volume book but we are mostly interested in the math subset of \\(\TeX\\). There are few options how to expose it on the web. \\(\KaTeX\\) JavaScript library is a solution that is used here. Another good option is the *MathJax* library.
+As of 2020 the \\(\TeX\\) typesetting language is quite popular. It provides a markup language rich enough to write even the complex multi-volume book but we are mostly interested in a math subset of \\(\TeX\\). There are few options how to expose it on the web. \\(\KaTeX\\) JavaScript library is a solution that is used here. Another good option is the *MathJax* library.
 
 At first, I will describe the software configuration that makes my site math-friendly. Then, a few examples of the \\(\TeX\\) math notation will be provided. Finally, we will play with basic radiometry definitions to get the desired relationship.
 
@@ -16,7 +16,7 @@ At first, I will describe the software configuration that makes my site math-fri
 
 This site is an output of *Hugo site generator*. Hugo is a program that consumes content in the form of *Markdown-formatted documents* and produces a web site - a collection of the files (HTML, CSS, JavaScript, images, etc.) that can be served by a web server. The site's layout and styles are defined by a *Hugo theme*. There are a lot of free themes available online.
 
-*KaTeX JavaScript library*. It renders mathematical notations. [KaTeX  Auto-render Extension](https://katex.org/docs/autorender.html) page provides html snippet that should be inserted into html header like this:
+*KaTeX JavaScript library*. It renders mathematical notations. [KaTeX  Auto-render Extension](https://katex.org/docs/autorender.html) page provides html snippet that should be inserted into html header:
 ```xml
   <!-- the head tag is usually defined by the theme, for example,
   in the theme that I use it's in the layouts/partials/header.html file -->
@@ -47,7 +47,7 @@ enable_math: true
 
 * *Displayed mode* delimiters are `\\[` and `\\]` <sup>[2](#footnote2)</sup>. In displayed mode the formula adds a line break. Here is the output of `\\[a=b+c\\]` markup: \\[a = b + c\\]
 
-As shown above basic arithmetic operations have a natural syntax. Here is a list of some other operations that I used in BSDF derivation:
+As shown above, basic arithmetic operations have a natural syntax. Here is a list of additional operations that I used in BSDF derivation:
 
 `\int`\\(\dashrightarrow \int\\) \\
 `\underset{X}{\int}` \\(\dashrightarrow \underset{X}{\int}\\) \\
