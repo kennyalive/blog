@@ -10,16 +10,16 @@ Some time ago I made a derivation of the known formula from the microfacet theor
 
 As of 2020 the \\(\TeX\\) typesetting language is quite popular. It provides a markup language rich enough to write even the complex multi-volume book but we are mostly interested in the math subset of \\(\TeX\\). There are few options how to expose it on the web. \\(\KaTeX\\) JavaScript library is a solution that is used here. Another good option is the *MathJax* library.
 
-At first, I will describe the software configuration that makes my site math-friendly. Then, a few examples of the \\(\TeX\\) math notation will be provided. Then, we will play with radiometry definitions to get the desired relationship.
+At first, I will describe the software configuration that makes my site math-friendly. Then, a few examples of the \\(\TeX\\) math notation will be provided. Finally, we will play with basic radiometry definitions to get the desired relationship.
 
 ### Software configuration
 
-*Hugo site generator* was used to generate this site. Hugo is a program that consumes content in the form of *Markdown-formatted documents* and produces a web site - a collection of the files (HTML, CSS, JavaScript, images, etc.) that can be served by a web server. The site structure is specified by a *Hugo theme*. There are a lot of free themes available online.
+This site is an output of *Hugo site generator*. Hugo is a program that consumes content in the form of *Markdown-formatted documents* and produces a web site - a collection of the files (HTML, CSS, JavaScript, images, etc.) that can be served by a web server. The site's layout and styles are defined by a *Hugo theme*. There are a lot of free themes available online.
 
-*KaTeX JavaScript library*. It renders mathematical notation. [KaTeX  Auto-render Extension](https://katex.org/docs/autorender.html) page provides html snippet that should be included into html header like this:
+*KaTeX JavaScript library*. It renders mathematical notations. [KaTeX  Auto-render Extension](https://katex.org/docs/autorender.html) page provides html snippet that should be inserted into html header like this:
 ```xml
-  <!-- the head tag should be defined somewhere by the theme,
-   in the theme that I use it's in the layouts/partials/header.html file -->
+  <!-- the head tag is usually defined by the theme, for example,
+  in the theme that I use it's in the layouts/partials/header.html file -->
   <head>
   .....
   {{ with .Params.enable_math}}
@@ -28,8 +28,8 @@ At first, I will describe the software configuration that makes my site math-fri
   </head>
 ```
 
-*Content metadata*. Markdown document processed by Hugo should start with a front matter section that defines a metadata associated with the document. We need to add the following two properties to enable usage of KaTex library: 
-* `markup` - allows to set non-default markdown engine. We need this because default engine does not work with KaTeX yet.
+*Content metadata*. Markdown document processed by Hugo should begin with a front matter section that defines a metadata associated with the document. We need to add the following two properties to enable usage of the KaTex library:
+* `markup` - allows to set non-default markdown engine. We need this because the default engine does not support KaTeX. <sup>[1](#myfootnote1)</sup>
 * `enable_math` - our custom property which enables KaTeX library on the given page (by default it is disabled)
 
 ```
@@ -153,3 +153,5 @@ By using specific microsurface BSDFs we can derive BSDF expressions that are com
    {F(\bold i, \bold h_r) G(\bold i, \bold o, \bold h_r) D(\bold h_r)}
    {4\lvert|\bold i \cdot \bold n\rvert \lvert|\bold o \cdot \bold n\rvert}
  \\]
+
+<a name="myfootnote1">1</a>: Here should be information about mmark support
