@@ -6,11 +6,11 @@ markup: mmark
 enable_math: true
 ---
 
-Some time ago I made a derivation of the known formula which describes how light interacts with a surface that has microgeometry. It was done on paper and that worked fine for me. Later, I decided to learn how to typeset math formulas in a digital form. I used this page as a playground to accomplish this goal and also to repeat the derivation.
+Some time ago I made a derivation of the known formula from the microfacet theory that shows how the reflection/refraction properties of the surface (macrosurface BSDF) depend on the reflection/refraction properties of the small facets that form the surface (microsurface BSDF). That work was done on paper. Now I decided to learn how to typeset math formulas in a digital form. I used this page as a playground to accomplish this goal and also to repeat the derivation.
 
-As of 2020 the \\(\TeX\\) typesetting language is quite popular. There are few options how to use it on the web. \\(\KaTeX\\) JavaScript library is a solution that is used here. Another good option is the *MathJax* library.
+As of 2020 the \\(\TeX\\) typesetting language is quite popular. It provides a markup language rich enough to write even the complex multi-volume book but we are mostly interested in the math subset of \\(\TeX\\). There are few options how to expose it on the web. \\(\KaTeX\\) JavaScript library is a solution that is used here. Another good option is the *MathJax* library.
 
-At first, I will describe software configuration that makes my site math friendly. Then, a few examples of the math notation in a raw text form will be provided. Then, the main part will present a derivation of macrosurface BSDF from a microsurface description.
+At first, I will describe the software configuration that makes my site math-friendly. Then, a few examples of the \\(\TeX\\) math notation will be provided. Then, we will play with radiometry definitions to get the desired relationship.
 
 ### Software configuration
 
