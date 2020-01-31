@@ -71,11 +71,21 @@ In the well known computer graphics paper *"Microfacet Models for Refraction thr
    \bigg| \frac{\bold o \cdot \bold m }{\bold o \cdot \bold n} \bigg|
    G(\bold i, \bold o, \bold m) D(\bold m) d\omega_m \\]
 
-Where \\(f_s\\) and \\(f_s^m\\) are the macrosurface and the microsurface BSDFs correspondingly, \\(G\\) and \\(D\\) are the shadowing-masking and the normal distribution functions as specified in the microfacet model, \\(\bold i\\) is the incident light direction, \\(\bold o\\) is the outgoing light direction, \\(\bold n\\) is the macrosurface normal and \\(\bold m\\) is the microsurface normal. \\(H^2(\bold n)\\) denotes the hemisphere of directions about a given surface normal \\(\bold n\\).
+The symbols have the following meaning:
+* \\(f_s\\) and \\(f_s^m\\) are the macrosurface and the microsurface BSDFs
+* \\(G\\) and \\(D\\) are the shadowing-masking and the normal distribution functions from the microfacet theory
+* \\(\bold i\\) and \\(\bold o\\) are the incident and outgoing light directions
+* \\(\bold n\\)  and \\(\bold m\\) are the macrosurface and the microsurface normals
+* \\(H^2(\bold n)\\) denotes the hemisphere of directions above the given surface normal \\(\bold n\\).
 
+According to microfacet model the surface has micro structure (black outline) that determines surface's reflectance properties, but those details are small and for an ordinary person the surface still looks nice and smooth (green outline) :
 ![microsurface](/math-test/microsurface.png#center)
 
-We can obtain formula \\((1)\\) by computing the *radiant flux* due to reflected or refracted light. Radiant flux is how the *power* is called in radiometry, i.e. the amount of energy the light carries through the region of space per unit time. We are going to compute the flux twice. At first by using the macrosurface BSDF and the second time the same quantity will be computed based on the microsurface BSDF. Then we can get the equation \\((1)\\) by equating both results. The wavelength dependency of radiometric quantities is ommited for simplicity. In the calculations that follow we observe the incoming and outgoing light in a narrow set a directions defined by the differential solid angles \\(d\omega_i\\) and \\(d\omega_o\\) correspondingly, which also define directions \\(\bold i\\) and \\(\bold o\\).
+We can obtain formula \\((1)\\) by computing the *radiant flux* due to reflected or refracted light. The radiant flux is how the *power* is called in radiometry, i.e. the amount of energy the light carries through the region of space per unit time. We are going to compute the same flux quantity in two different ways, by using macrosurface and microsurface representations correpondingly. Then we can get \\((1)\\) by equating both results.
+
+The wavelength dependency of radiometric quantities is ommited for simplicity. In the calculations that follow we observe the incoming and outgoing light in a narrow set a directions defined by the differential solid angles \\(d\omega_i\\) and \\(d\omega_o\\) correspondingly, which also define directions \\(\bold i\\) and \\(\bold o\\).
+
+Also the equations below are mostly basic radiometric definitions. Some good sources that introduce these concepts are listed at the bottom of this page <sup>[3](#footnote3)</sup>
 
 ###### a) Flux computation according to macrosurface BSDF $$f_s$$
 
@@ -158,3 +168,5 @@ By using specific microsurface BSDFs we can derive BSDF expressions that are com
 <a name="footnote1">1</a>: Here should be information about mmark support
 
 <a name="footnote2">2</a>: Write here about `$$` delimiter
+
+<a name="footnote3">3</a>: Write about sources to learn about radiometry: PBRT, advance global illumination and Veach thesis
