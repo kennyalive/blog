@@ -6,7 +6,7 @@ markup: mmark
 enable_math: true
 ---
 
-Some time ago I made a derivation of the known formula from the microfacet theory that shows how the reflection/refraction properties of the surface (macrosurface BSDF) depend on the reflection/refraction properties of the small facets that form the surface (microsurface BSDF). That work was done on paper. Now I decided to learn how to typeset math formulas in a digital form. I used this page as a playground to accomplish this goal and also to repeat the derivation.
+Some time ago I made a derivation of the known formula from the microfacet theory that shows how the reflection properties of the surface depend on the reflection properties of the small facets that form the surface. That work was done on paper. Now I decided to learn how to typeset math formulas in a digital form. I used this page as a playground to practice this skill, to repeat the derivation and to explain some steps along the way. To summarize, this test write-up is about math typesetting, microsurface theory and radiometry but without fine details. Let's start.
 
 As of 2020 the \\(\TeX\\) typesetting language is quite popular. It provides a markup language rich enough to write even the complex multi-volume book but we are mostly interested in a math subset of \\(\TeX\\). There are few options how to expose it on the web. \\(\KaTeX\\) JavaScript library is a solution that is used here. Another good option is the *MathJax* library.
 
@@ -16,7 +16,7 @@ At first, I will describe the software configuration that makes my site math-fri
 
 This site is an output of *Hugo site generator*. Hugo is a program that consumes content in the form of *Markdown-formatted documents* and produces a web site - a collection of the files (HTML, CSS, JavaScript, images, etc.) that can be served by a web server. The site's layout and styles are defined by a *Hugo theme*. There are a lot of free themes available online.
 
-*KaTeX JavaScript library*. It renders mathematical notations. [KaTeX  Auto-render Extension](https://katex.org/docs/autorender.html) page provides html snippet that should be inserted into html header:
+*KaTeX JavaScript library*. It renders mathematical formulas. [KaTeX  Auto-render Extension](https://katex.org/docs/autorender.html) page provides html snippet that should be inserted into html header:
 ```xml
   <!-- the head tag is usually defined by the theme, for example,
   in the theme that I use it's in the layouts/partials/header.html file -->
@@ -28,9 +28,9 @@ This site is an output of *Hugo site generator*. Hugo is a program that consumes
   </head>
 ```
 
-*Content metadata*. Markdown document processed by Hugo should begin with a front matter section that defines a metadata associated with the document. We need to add the following two properties to enable usage of the KaTex library:
+*Content metadata*. Markdown document processed by Hugo should begin with a front matter section that defines a metadata associated with the document. I had to add the following two properties to enable usage of the KaTex library:
 * `markup` - allows to set non-default markdown engine. We need this because the default engine does not support KaTeX. <sup>[1](#footnote1)</sup>
-* `enable_math` - our custom property which enables KaTeX library on the given page (by default it is disabled)
+* `enable_math` - custom property which enables KaTeX library on the current page (by default math is disabled)
 
 ```
 ---
@@ -43,9 +43,9 @@ enable_math: true
 
 ### Math notation
 \\(\KaTeX\\) determines which parts of the document contain math by looking for the delimiters that surround the math snippets. There are two math rendering modes, each one is defined by a different pair of delimiters.
-* *Inline mode* delimiters are `\\(` and `\\)`. In inline mode the math formula  won't break the line, for example, here is the assigment \\(a=b+c\\) in the middle of this line produced by `\\(a=b+c\\)`
+* *Inline mode* delimiters: `\\(` and `\\)`. In inline mode the math formula  won't break the line, for example, here is the assigment \\(a=b+c\\) in the middle of this line produced by `\\(a=b+c\\)`
 
-* *Displayed mode* delimiters are `\\[` and `\\]` <sup>[2](#footnote2)</sup>. In displayed mode the formula adds a line break. Here is the output of `\\[a=b+c\\]` markup: \\[a = b + c\\]
+* *Displayed mode* delimiters: `\\[` and `\\]` <sup>[2](#footnote2)</sup>. In displayed mode the formula adds a line break. Here is the output of `\\[a=b+c\\]` markup: \\[a = b + c\\]
 
 As shown above, basic arithmetic operations have a natural syntax. Here is a list of additional operations that I used in BSDF derivation:
 
@@ -61,6 +61,8 @@ As shown above, basic arithmetic operations have a natural syntax. Here is a lis
 `\bigg|` \\(\dashrightarrow \bigg| \\)
 
 The full list of supported \\(\TeX\\) functions can be found in [KaTeX Documentation](https://katex.org/docs/supported.html)
+
+Let's proceed to the next unrelated topic.
 
 ### Macrosurface BSDF integral derivation
 In the well known computer graphics paper *"Microfacet Models for Refraction through Rough Surfaces"* (Walter et al. 2007) there is a formula that shows relationship between microsurface and macrosurface BSDFs:
@@ -78,7 +80,7 @@ The symbols have the following meaning:
 * \\(\bold n\\)  and \\(\bold m\\) are the macrosurface and the microsurface normals
 * \\(H^2(\bold n)\\) denotes the hemisphere of directions above the given surface normal \\(\bold n\\).
 
-According to microfacet model the surface has micro structure (black outline) that determines surface's reflectance properties, but those details are small and for an ordinary person the surface still looks nice and smooth (green outline) :
+According to the microfacet model the surface has micro structure (black outline) that determines surface's reflectance properties, but those details are small and for an ordinary person the surface still looks nice and smooth (green outline) :
 ![microsurface](/math-test/microsurface.png#center)
 
 We can obtain formula \\((1)\\) by computing the *radiant flux* due to reflected or refracted light. The radiant flux is how the *power* is called in radiometry, i.e. the amount of energy the light carries through the region of space per unit time. We are going to compute the same flux quantity in two different ways, by using macrosurface and microsurface representations correpondingly. Then we can get \\((1)\\) by equating both results.
