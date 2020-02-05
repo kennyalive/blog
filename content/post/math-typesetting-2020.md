@@ -66,12 +66,14 @@ Let's proceed to the next unrelated topic.
 
 ### Macrosurface BSDF integral derivation
 In the well known computer graphics paper *"Microfacet Models for Refraction through Rough Surfaces"* (Walter et al. 2007) there is a formula that shows relationship between microsurface and macrosurface BSDFs:
-
+<div class="formula">
 \\[ \tag{1} f_s(\bold i, \bold o, \bold n) = 
    \underset{H^2(\bold n)}{\int} \bigg| \frac{\bold i \cdot \bold m }{\bold i \cdot \bold n} \bigg|
    f_s^m(\bold i, \bold o, \bold m)
    \bigg| \frac{\bold o \cdot \bold m }{\bold o \cdot \bold n} \bigg|
-   G(\bold i, \bold o, \bold m) D(\bold m) d\omega_m \\]
+   G(\bold i, \bold o, \bold m) D(\bold m) d\omega_m
+\\]
+</div>
 
 The symbols have the following meaning:
 * \\(f_s\\) and \\(f_s^m\\) are the macrosurface and the microsurface BSDFs
@@ -127,18 +129,18 @@ where \\(d\omega_m\\) is the differential solid angle oriented along \\(\bold m\
 \\[ d\Phi_m = dM_mdA_m \\]
 
 Total flux is computed by considering all facets (integration domain is a hemisphere around macrosurface normal \\(\bold n\\)):
-\\[ \tag{3} d\Phi = \underset{H^2(\bold n)}{\int} d\Phi_m d\omega_m =
-   \underset{H^2(\bold n)}{\int} f_s^m(\bold i, \bold o, \bold m) L_i
+\\[ \tag{3} d\Phi = \underset{H^2(\bold n)}{\int} d\Phi_m d\omega_m
+   \newline
+   = \underset{H^2(\bold n)}{\int} f_s^m(\bold i, \bold o, \bold m) L_i
    \lvert(\bold m \cdot \bold i)
    (\bold m \cdot \bold o)\rvert
    D G
-   d\omega_i d\omega_o dA d\omega_m
-\\]
+   d\omega_i d\omega_o dA d\omega_m \\]
 
 ###### c) Getting the result
 
 By equating \\((2)\\) and \\((3)\\) and noticing that \\(d\omega_i\\), \\(d\omega_o\\), \\(dA\\) and \\(L_i\\) do not depend on the integration domain we get the desired result:
-
+<div class="formula">
 \\[ f_s(\bold i, \bold o, \bold n)L_i
    \lvert(\bold n \cdot \bold i)
    (\bold n \cdot \bold o)\rvert
@@ -149,14 +151,16 @@ By equating \\((2)\\) and \\((3)\\) and noticing that \\(d\omega_i\\), \\(d\omeg
    D G
    d\omega_i d\omega_o dA d\omega_m
 \\]
-
+</div>
 \\[\Downarrow\\]
-
+<div class="formula">
 \\[ f_s(\bold i, \bold o, \bold n) = 
    \underset{H^2(\bold n)}{\int} \bigg| \frac{\bold i \cdot \bold m }{\bold i \cdot \bold n} \bigg|
    f_s^m(\bold i, \bold o, \bold m)
    \bigg| \frac{\bold o \cdot \bold m }{\bold o \cdot \bold n} \bigg|
-   G(\bold i, \bold o, \bold m) D(\bold m) d\omega_m \\]
+   G(\bold i, \bold o, \bold m) D(\bold m) d\omega_m
+\\]
+</div>
 
 That's the end of the derivation.
 
