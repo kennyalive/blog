@@ -2,3 +2,6 @@ baseURL = "https://kennyalive.com/"
 languageCode = "en-us"
 title = "Artem Kharytoniuk's blog"
 theme = "nofancy"
+[markup]
+  [markup.highlight]
+    style = "friendly"
