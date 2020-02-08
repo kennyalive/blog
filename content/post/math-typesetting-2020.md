@@ -162,7 +162,6 @@ By equating \\((2)\\) and \\((3)\\) and noticing that \\(d\omega_i\\), \\(d\omeg
 \\]
 </div>
 
-
 ### Notes
 By using specific microsurface BSDFs we can derive BSDF expressions that are commonly used in computer graphics. For example, by assuming that microfacets are optically flat surfaces with \\(f_s^m\\) of a mirror the expression \\((1)\\) is simplified to this form:
 
@@ -176,6 +175,6 @@ By using specific microsurface BSDFs we can derive BSDF expressions that are com
 <a name="footnote2">2</a>: KaTeX allows to use `$$`, `$$` pair as an alternative to `\\[`, `\\]`. I had to use $$ delimiter once in this post because `\\[`, `\\]` pair did not work for some reasons.
 
 <a name="footnote3">3</a>: Radiometric quantities in computer graphics:
-* Awesome and free **[PBRT book](http://www.pbr-book.org/3ed-2018/Color_and_Radiometry/Radiometry.html)**, section 5.4.
+* Awesome and free **[PBRT book](http://www.pbr-book.org/3ed-2018/Color_and_Radiometry/Radiometry.html)**, 3rd edition, section 5.4.
 * *Advanced Global Illumination* by Philip Dutre et al., 2nd edition, section 2.3. The first five chapters of this book is probably my favourite introduction to light transport theory.
 * [Veach's thesis] (https://graphics.stanford.edu/papers/veach_thesis/thesis-bw.pdf), section 3.4-3.5.
