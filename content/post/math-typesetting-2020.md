@@ -29,7 +29,7 @@ This site is an output of *Hugo site generator*. Hugo is a program that consumes
 ```
 
 *Content metadata*. Markdown document processed by Hugo should begin with a front matter section that defines a metadata associated with the document. I had to add the following two properties to enable usage of the KaTex library:
-* `markup` - allows to set non-default markdown engine. We need this because the default engine does not support KaTeX. <sup>[1](#footnote1)</sup>
+* `markup` - allows to set non-default markdown engine. We need this because the default engine does not support KaTeX yet. <sup>[1](#footnote1)</sup>
 * `enable_math` - custom property which enables KaTeX library on the current page (by default math is disabled)
 
 ```
@@ -45,7 +45,7 @@ enable_math: true
 \\(\KaTeX\\) determines which parts of the document contain math by looking for the delimiters that surround the math snippets. There are two math rendering modes, each one is defined by a different pair of delimiters.
 * *Inline mode* delimiters: `\\(` and `\\)`. In inline mode the math formula  won't break the line, for example, here is the assigment \\(a=b+c\\) in the middle of this line produced by `\\(a=b+c\\)`
 
-* *Displayed mode* delimiters: `\\[` and `\\]` <sup>[2](#footnote2)</sup>. In displayed mode the formula adds a line break. Here is the output of `\\[a=b+c\\]` markup: \\[a = b + c\\]
+* *Display mode* delimiters: `\\[` and `\\]` <sup>[2](#footnote2)</sup>. In display mode the formula adds a line break. Here is the output of `\\[a=b+c\\]` markup: \\[a = b + c\\]
 
 As shown above, basic arithmetic operations have a natural syntax. Here is a list of additional operations that I used in BSDF derivation:
 
@@ -89,9 +89,9 @@ We can obtain formula \\((1)\\) by computing the *radiant flux* due to reflected
 
 The wavelength dependency of radiometric quantities is ommited for simplicity. In the calculations that follow we observe the incoming and outgoing light in a narrow set a directions defined by the differential solid angles \\(d\omega_i\\) and \\(d\omega_o\\) correspondingly, which also define directions \\(\bold i\\) and \\(\bold o\\).
 
-Also the equations below are mostly basic radiometric definitions. Some good sources that introduce these concepts are listed at the bottom of this page <sup>[3](#footnote3)</sup>
+Also the equations below are mostly basic radiometric definitions. Some good resources that introduce these concepts are listed at the bottom of this page <sup>[3](#footnote3)</sup>
 
-###### a) Flux computation according to macrosurface BSDF $$f_s$$
+###### a) Flux computation according to macrosurface BSDF \\(f_s\\)
 
 ![reflection_macro](/math-test/reflection_macro.png#center)
 
@@ -110,7 +110,7 @@ Outgoing flux from differential surface area \\(dA\\):
    (\bold n \cdot \bold o)\rvert
    d\omega_i d\omega_o dA \\]
 
-###### b) Flux computation according to microsurface BSDF $$f_s^m$$
+###### b) Flux computation according to microsurface BSDF \\(f_s^m\\)
 
 ![reflection_micro](/math-test/reflection_micro.png#center)
 Surface with microgeometry is a collection of facets of different orientation. At first we will compute outgoing flux from facets that have the same orientation \\(\bold m\\). Then the total flux is an integral over all possible facet orientations. All quantities that are computed for a subset of facets with normal \\(\bold m \\) are provided with corresponding subscript.
@@ -118,7 +118,7 @@ Surface with microgeometry is a collection of facets of different orientation. A
 Irradiance, outgoing radiance and \\(\mathcal{radiosity}\\) are computed identically to macrosurface case with a difference that we use facet's normal \\(\bold m\\) instead of \\(\bold n \\) and microsurface BSDF \\(f_s^m\\) instead of \\(f_s\\):
 \\[ dE_m = L_i d\omega_i \lvert(\bold m \cdot \bold i)\rvert \\]
 
-$$ dL_{mo} = f_s^m(\bold i, \bold o, \bold m) dE_m $$
+\\[ dL_{mo} = f_s^m(\bold i, \bold o, \bold m) dE_m \\]
 
 $$ dM_m = dL_{mo} d\omega_o \lvert(\bold m \cdot \bold o)\rvert $$
 
@@ -162,8 +162,8 @@ By equating \\((2)\\) and \\((3)\\) and noticing that \\(d\omega_i\\), \\(d\omeg
 \\]
 </div>
 
-That's the end of the derivation.
 
+### Notes
 By using specific microsurface BSDFs we can derive BSDF expressions that are commonly used in computer graphics. For example, by assuming that microfacets are optically flat surfaces with \\(f_s^m\\) of a mirror the expression \\((1)\\) is simplified to this form:
 
 \\[ f_r(\bold i, \bold o, \bold n) = \frac
@@ -171,8 +171,11 @@ By using specific microsurface BSDFs we can derive BSDF expressions that are com
    {4\lvert|\bold i \cdot \bold n\rvert \lvert|\bold o \cdot \bold n\rvert}
  \\]
 
-<a name="footnote1">1</a>: Here should be information about mmark support
+<a name="footnote1">1</a>: There are ongoing developments to add KaTeX support to Hugo's default markdown engine (goldmark). I'll update this post to use default engine when that functionality is available.
 
-<a name="footnote2">2</a>: Write here about `$$` delimiter
+<a name="footnote2">2</a>: KaTeX allows to use `$$`, `$$` pair as an alternative to `\\[`, `\\]`. I had to use $$ delimiter once in this post because `\\[`, `\\]` pair did not work for some reasons.
 
-<a name="footnote3">3</a>: Write about sources to learn about radiometry: PBRT, advance global illumination and Veach thesis
+<a name="footnote3">3</a>: Radiometric quantities in computer graphics:
+* Awesome and free **[PBRT book](http://www.pbr-book.org/3ed-2018/Color_and_Radiometry/Radiometry.html)**, section 5.4.
+* *Advanced Global Illumination* by Philip Dutre et al., 2nd edition, section 2.3. The first five chapters of this book is probably my favourite introduction to light transport theory.
+* [Veach's thesis] (https://graphics.stanford.edu/papers/veach_thesis/thesis-bw.pdf), section 3.4-3.5.
