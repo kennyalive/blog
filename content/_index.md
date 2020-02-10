@@ -1,0 +1,3 @@
+Hello visitor...
+
+My name is Artem Kharytoniuk and this is my public online space. This is an introductory section but I'm shy to write a lot about myself, so I'll write about this introductory section. I put it under the list of my posts - that's fine, I have only a few of them. When I write more posts the list will grow and it will push this introduction below the window edge. I'm not sure if my web skills are good enough to fix that. I hope I'll be famous enough by that time, so introduction won't be necessary, otherwise I'll fix HTML and CSS, I promise.
