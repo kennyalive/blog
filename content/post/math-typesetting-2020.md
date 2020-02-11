@@ -17,7 +17,7 @@ At first, I will describe the software configuration that makes my site math-fri
 
 This site (including this page) is an output of ***Hugo site generator***. Hugo is a program that consumes content in the form of *Markdown-formatted documents* and produces a web site - a collection of the files (HTML, CSS, JavaScript, images, etc.) that can be served by a web server. The site's layout and styles are defined by a *Hugo theme*. There are a lot of free themes available online.
 
-***KaTeX JavaScript library*** is used to render mathematical formulas. [KaTeX  Auto-render Extension](https://katex.org/docs/autorender.html) provides html snippet that should be inserted into html header to enable KaTeX on the page:
+***KaTeX JavaScript library*** is used to render mathematical formulas. [KaTeX  Auto-render Extension](https://katex.org/docs/autorender.html) provides html snippet that should be inserted into html header to enable KaTeX on the web page:
 ```xml
   <!-- the head tag is usually defined by the theme, for example,
   in the theme that I use it's in the layouts/partials/header.html file -->
@@ -63,7 +63,7 @@ As shown above, basic arithmetic operations have a natural syntax. Here is a lis
 
 The full list of supported \\(\TeX\\) functions can be found in [KaTeX Documentation](https://katex.org/docs/supported.html)
 
-Let's proceed to the next unrelated topic.
+Let's proceed to the promised derivation.
 
 ### Macrosurface BSDF integral derivation
 In the well known computer graphics paper *"Microfacet Models for Refraction through Rough Surfaces"* (Walter et al. 2007) there is a formula that shows relationship between microsurface and macrosurface BSDFs:
