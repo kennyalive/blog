@@ -15,9 +15,9 @@ At first, I will describe the software configuration that makes my site math-fri
 
 ### Software configuration
 
-This site is an output of *Hugo site generator*. Hugo is a program that consumes content in the form of *Markdown-formatted documents* and produces a web site - a collection of the files (HTML, CSS, JavaScript, images, etc.) that can be served by a web server. The site's layout and styles are defined by a *Hugo theme*. There are a lot of free themes available online.
+This site (including this page) is an output of ***Hugo site generator***. Hugo is a program that consumes content in the form of *Markdown-formatted documents* and produces a web site - a collection of the files (HTML, CSS, JavaScript, images, etc.) that can be served by a web server. The site's layout and styles are defined by a *Hugo theme*. There are a lot of free themes available online.
 
-*KaTeX JavaScript library*. It renders mathematical formulas. [KaTeX  Auto-render Extension](https://katex.org/docs/autorender.html) page provides html snippet that should be inserted into html header:
+***KaTeX JavaScript library*** is used to render mathematical formulas. [KaTeX  Auto-render Extension](https://katex.org/docs/autorender.html) provides html snippet that should be inserted into html header to enable KaTeX on the page:
 ```xml
   <!-- the head tag is usually defined by the theme, for example,
   in the theme that I use it's in the layouts/partials/header.html file -->
@@ -29,13 +29,13 @@ This site is an output of *Hugo site generator*. Hugo is a program that consumes
   </head>
 ```
 
-*Content metadata*. Markdown document processed by Hugo should begin with a front matter section that defines a metadata associated with the document. I had to add the following two properties to enable usage of the KaTex library:
+***Content metadata***. The markdown documents consumed by Hugo should begin with a front matter section that defines a metadata associated with a document. I had to add the following two properties to enable usage of the KaTex library:
 * `markup` - allows to set non-default markdown engine. We need this because the default engine does not support KaTeX yet. <sup>[1](#footnote1)</sup>
 * `enable_math` - custom property which enables KaTeX library on the current page (by default math is disabled)
 
 ```
 ---
-title: "Math typesetting 2020"
+title: "Math Typesetting Test: Macrosurface BSDF Derivation"
 date: 2020-01-08T11:54:23+01:00
 markup: mmark
 enable_math: true
