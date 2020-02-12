@@ -11,7 +11,7 @@ This post will repeat the derivation with the help of contemporary software wher
 
 As of 2020 the \\(\TeX\\) typesetting language is quite popular. It provides a markup language rich enough to write even the complex multi-volume book but we are mostly interested in a math subset of \\(\TeX\\). There are few options how to expose it on the web. \\(\KaTeX\\) JavaScript library is a solution that is used here. Another good option is the *MathJax* library.
 
-At first, I will describe the software configuration that makes my site math-friendly. Then, a few examples of the \\(\TeX\\) math notation will be provided. Finally, we will play with basic radiometry definitions to get the desired relationship.
+At first, I will describe software configuration that makes my site math-friendly. Then, a few examples of the \\(\TeX\\) math notation will be provided. The last part is computer graphics related where we will play with radiometric quantities to get the desired relationship.
 
 ### Software configuration
 
@@ -63,8 +63,6 @@ As shown above, basic arithmetic operations have a natural syntax. Here is a lis
 
 The full list of supported \\(\TeX\\) functions can be found in [KaTeX Documentation](https://katex.org/docs/supported.html)
 
-Let's proceed to the promised derivation.
-
 ### Macrosurface BSDF integral derivation
 In the well known computer graphics paper *"Microfacet Models for Refraction through Rough Surfaces"* (Walter et al. 2007) there is a formula that shows relationship between microsurface and macrosurface BSDFs:
 <div class="formula">
@@ -83,6 +81,15 @@ The symbols have the following meaning:
 * \\(\bold n\\)  and \\(\bold m\\) are the macrosurface and the microsurface normals
 * \\(H^2(\bold n)\\) denotes the hemisphere of directions above the given surface normal \\(\bold n\\).
 
+The above equation may look a bit academic and you won't meet it too often in public places in contrast to this guy:
+
+\\[ \tag{shiny} f_r(\bold i, \bold o, \bold n) = \frac
+   {F(\bold i, \bold h_r) G(\bold i, \bold o, \bold h_r) D(\bold h_r)}
+   {4\lvert|\bold i \cdot \bold n\rvert \lvert|\bold o \cdot \bold n\rvert}
+ \\]
+
+ But! The truth is that \\((shiny)\\) and \\((1)\\) are in close relation with one another. You can get \\((shiny)\\) if you put \\(f_s^m\\) = Mirror_BRDF into \\((1)\\). Even more, you can put \\((shiny)\\) itself into \\((1)\\) but it's hard to imagine what happens in that case <sup>[3](#footnote3)</sup>. Another bold idea is to assume that \\(f_s^m\\) is a Lambertian reflector but that's starting to look like a rocket (moon?) science... The point is that \\((1)\\) is quite important equation and it could be an interesting exercise to get it from the basic principles.
+
 According to the microfacet model the surface has micro structure (black outline) that determines surface's reflectance properties, but those details are small and for an ordinary person the surface still looks nice and smooth (green outline) :
 ![microsurface](/math-test/microsurface.png#center)
 
@@ -90,7 +97,7 @@ We can obtain formula \\((1)\\) by computing the *radiant flux* due to reflected
 
 The wavelength dependency of radiometric quantities is ommited for simplicity. In the calculations that follow we observe the incoming and outgoing light in a narrow set a directions defined by the differential solid angles \\(d\omega_i\\) and \\(d\omega_o\\) correspondingly, which also define directions \\(\bold i\\) and \\(\bold o\\).
 
-Also the equations below are mostly basic radiometric definitions. Some good resources that introduce these concepts are listed at the bottom of this page <sup>[3](#footnote3)</sup>
+Also the equations below are mostly basic radiometric definitions. Some good resources that introduce these concepts are listed at the bottom of this page <sup>[4](#footnote4)</sup>
 
 ###### a) Flux computation according to macrosurface BSDF \\(f_s\\)
 
@@ -164,18 +171,13 @@ By equating \\((2)\\) and \\((3)\\) and noticing that \\(d\omega_i\\), \\(d\omeg
 </div>
 
 ### Notes
-By using specific microsurface BSDFs we can derive BSDF expressions that are commonly used in computer graphics. For example, by assuming that microfacets are optically flat surfaces with \\(f_s^m\\) of a mirror the expression \\((1)\\) is simplified to this form:
-
-\\[ f_r(\bold i, \bold o, \bold n) = \frac
-   {F(\bold i, \bold h_r) G(\bold i, \bold o, \bold h_r) D(\bold h_r)}
-   {4\lvert|\bold i \cdot \bold n\rvert \lvert|\bold o \cdot \bold n\rvert}
- \\]
-
 <a name="footnote1">1</a>: There are ongoing developments to add KaTeX support to Hugo's default markdown engine (goldmark). I'll update this post to use default engine when that functionality is available.
 
 <a name="footnote2">2</a>: KaTeX allows to use `$$`, `$$` pair as an alternative to `\\[`, `\\]`. I had to use $$ delimiter once in this post because `\\[`, `\\]` pair did not work for some reasons.
 
-<a name="footnote3">3</a>: Radiometric quantities in computer graphics:
+<a name="footnote3">3</a>: I guess Eric Heitz who wrote [impressive paper about scattering on microgeometry](http://jcgt.org/published/0003/02/03/paper.pdf) might know the answer.
+
+<a name="footnote4">4</a>: Radiometric quantities in computer graphics:
 * Awesome and free **[PBRT book](http://www.pbr-book.org/3ed-2018/Color_and_Radiometry/Radiometry.html)**, 3rd edition, section 5.4.
 * *Advanced Global Illumination* by Philip Dutre et al., 2nd edition, section 2.3. The first five chapters of this book is probably my favourite introduction to light transport theory.
 * [Veach's thesis] (https://graphics.stanford.edu/papers/veach_thesis/thesis-bw.pdf), section 3.4-3.5.
