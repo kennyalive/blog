@@ -173,15 +173,15 @@ By equating \\((2)\\) and \\((3)\\) and noticing that \\(d\omega_i\\), \\(d\omeg
 ![wink](/math-test/wink.png#center)
 
 ### Notes
-<a name="footnote1">1</a>: There are ongoing developments to add KaTeX support to Hugo's default markdown engine (goldmark). I'll update this post to use default engine when that functionality is available.
+<a name="footnote1">1</a>. There are ongoing developments to add KaTeX support to Hugo's default markdown engine (goldmark). I'll update this post to use default engine when that functionality is available.
 
-<a name="footnote2">2</a>: KaTeX allows to use `$$`, `$$` pair as an alternative to `\\[`, `\\]`. I had to use $$ delimiter once in this post because `\\[`, `\\]` pair did not work for unknown reason.
+<a name="footnote2">2</a>. KaTeX allows to use `$$`, `$$` pair as an alternative to `\\[`, `\\]`. I had to use $$ delimiter once in this post because `\\[`, `\\]` pair did not work for unknown reason.
 
-<a name="footnote3">3</a>: I guess Eric Heitz who wrote [impressive paper about scattering on microgeometry](http://jcgt.org/published/0003/02/03/paper.pdf) might know the answer.
+<a name="footnote3">3</a>. I guess Eric Heitz who wrote [impressive paper about scattering on microgeometry](http://jcgt.org/published/0003/02/03/paper.pdf) might know the answer.
 
-<a name="footnote4">4</a>: Radiometric quantities in computer graphics:
+<a name="footnote4">4</a>. Radiometric quantities in computer graphics:
 * Awesome and free **[PBRT book](http://www.pbr-book.org/3ed-2018/Color_and_Radiometry/Radiometry.html)**, 3rd edition, section 5.4.
 * *Advanced Global Illumination* by Philip Dutre et al., 2nd edition, section 2.3. The first five chapters of this book is probably my favourite introduction to light transport theory.
 * [Veach's thesis] (https://graphics.stanford.edu/papers/veach_thesis/thesis-bw.pdf), sections 3.4-3.5.
 
-Attribution: the free wink icon if from `freepngimg.com` site.
+Attribution: the free wink icon is from `freepngimg.com` site.
