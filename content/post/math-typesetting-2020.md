@@ -1,7 +1,6 @@
 ---
 title: "Math Typesetting Test: Macrosurface BSDF Derivation"
 date: 2020-02-13T00:28:17+01:00
-draft: true
 markup: mmark
 enable_math: true
 ---
