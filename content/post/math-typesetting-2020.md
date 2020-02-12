@@ -64,6 +64,9 @@ As shown above, basic arithmetic operations have a natural syntax. Here is a lis
 The full list of supported \\(\TeX\\) functions can be found in [KaTeX Documentation](https://katex.org/docs/supported.html)
 
 ### Macrosurface BSDF integral derivation
+According to the microfacet model the surface has a micro structure (black outline) that determines surface's reflectance properties. Those details are small and for an ordinary person the surface still looks nice and smooth (green outline) :
+![microsurface](/math-test/microsurface.png#center)
+
 In the well known computer graphics paper *"Microfacet Models for Refraction through Rough Surfaces"* (Walter et al. 2007) there is a formula that shows relationship between microsurface and macrosurface BSDFs:
 <div class="formula">
 \\[ \tag{1} f_s(\bold i, \bold o, \bold n) = 
@@ -89,9 +92,6 @@ The above equation may look a bit academic and you won't meet it too often in pu
  \\]
 
  But! The truth is that \\((shiny)\\) and \\((1)\\) are in close relation with one another. You can get \\((shiny)\\) if you put \\(f_s^m\\) = Mirror_BRDF into \\((1)\\). Even more, you can put \\((shiny)\\) itself into \\((1)\\) but it's hard to imagine what happens in that case <sup>[3](#footnote3)</sup>. Another bold idea is to assume that \\(f_s^m\\) is a Lambertian reflector but that's starting to look like a rocket (moon?) science... The point is that \\((1)\\) is quite important equation and it could be an interesting exercise to get it from the basic principles.
-
-According to the microfacet model the surface has micro structure (black outline) that determines surface's reflectance properties, but those details are small and for an ordinary person the surface still looks nice and smooth (green outline) :
-![microsurface](/math-test/microsurface.png#center)
 
 We can obtain formula \\((1)\\) by computing the *radiant flux* due to reflected or refracted light. The radiant flux is how the *power* is called in radiometry, i.e. the amount of energy the light carries through the region of space per unit time. We are going to compute the same flux quantity in two different ways, by using macrosurface and microsurface representations correpondingly. Then we can get \\((1)\\) by equating both results.
 
@@ -180,4 +180,4 @@ By equating \\((2)\\) and \\((3)\\) and noticing that \\(d\omega_i\\), \\(d\omeg
 <a name="footnote4">4</a>: Radiometric quantities in computer graphics:
 * Awesome and free **[PBRT book](http://www.pbr-book.org/3ed-2018/Color_and_Radiometry/Radiometry.html)**, 3rd edition, section 5.4.
 * *Advanced Global Illumination* by Philip Dutre et al., 2nd edition, section 2.3. The first five chapters of this book is probably my favourite introduction to light transport theory.
-* [Veach's thesis] (https://graphics.stanford.edu/papers/veach_thesis/thesis-bw.pdf), section 3.4-3.5.
+* [Veach's thesis] (https://graphics.stanford.edu/papers/veach_thesis/thesis-bw.pdf), sections 3.4-3.5.
