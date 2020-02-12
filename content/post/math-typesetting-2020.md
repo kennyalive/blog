@@ -114,14 +114,14 @@ Having outgoing radiance we can compute the radiance exitance (another name with
 
 Outgoing flux from differential surface area \\(dA\\):
 \\[ \tag{2} d\Phi = dMdA = f_s(\bold i, \bold o, \bold n)L_i
-   \lvert(\bold n \cdot \bold i)
-   (\bold n \cdot \bold o)\rvert
+   \lvert(\bold n \cdot \bold i)\rvert
+   \lvert(\bold n \cdot \bold o)\rvert
    d\omega_i d\omega_o dA \\]
 
 ###### b) Flux computation according to microsurface BSDF \\(f_s^m\\)
 
 ![reflection_micro](/math-test/reflection_micro.png#center)
-Surface with microgeometry is a collection of facets of different orientation. At first we will compute outgoing flux from facets that have the same orientation \\(\bold m\\). Then the total flux is an integral over all possible facet orientations. All quantities that are computed for a subset of facets with normal \\(\bold m \\) are provided with corresponding subscript.
+The surface can be viewed as a collection of facets of different orientation. At first we will compute outgoing flux from the facets that have the same orientation \\(\bold m\\) (to be more precise there are zero facets with some specific orientation and we implicitly assume some infinitesimal deviation \\(\pm d \bold m\\) is okay). Then the total flux is an integral over all possible facet orientations. All quantities that are computed for a subset of facets with normal \\(\bold m \\) are provided with corresponding subscript.
 
 Irradiance, outgoing radiance and \\(\mathcal{radiosity}\\) are computed identically to macrosurface case with a difference that we use facet's normal \\(\bold m\\) instead of \\(\bold n \\) and microsurface BSDF \\(f_s^m\\) instead of \\(f_s\\):
 \\[ dE_m = L_i d\omega_i \lvert(\bold m \cdot \bold i)\rvert \\]
@@ -130,7 +130,7 @@ Irradiance, outgoing radiance and \\(\mathcal{radiosity}\\) are computed identic
 
 $$ dM_m = dL_{mo} d\omega_o \lvert(\bold m \cdot \bold o)\rvert $$
 
-The total area of facets with normal \\(\bold m \\) that receive light and reflect it without self-shadowing is computed according to definitions of functions \\(D\\) and \\(G\\):
+The total area of the facets with normal \\(\bold m \\) that receive light and reflect it without self-shadowing is computed according to how \\(D\\) and \\(G\\) are defined:
 \\[ dA_m = D G d\omega_m dA \\]
 
 where \\(d\omega_m\\) is the differential solid angle oriented along \\(\bold m\\). Outgoing flux from facets with normal \\(\bold m\\):
@@ -140,8 +140,8 @@ Total flux is computed by considering all facets (integration domain is a hemisp
 \\[ \tag{3} d\Phi = \underset{H^2(\bold n)}{\int} d\Phi_m d\omega_m
    \newline
    = \underset{H^2(\bold n)}{\int} f_s^m(\bold i, \bold o, \bold m) L_i
-   \lvert(\bold m \cdot \bold i)
-   (\bold m \cdot \bold o)\rvert
+   \lvert(\bold m \cdot \bold i)\rvert
+   \lvert(\bold m \cdot \bold o)\rvert
    D G
    d\omega_i d\omega_o dA d\omega_m \\]
 
@@ -150,12 +150,12 @@ Total flux is computed by considering all facets (integration domain is a hemisp
 By equating \\((2)\\) and \\((3)\\) and noticing that \\(d\omega_i\\), \\(d\omega_o\\), \\(dA\\) and \\(L_i\\) do not depend on the integration domain we get the desired result:
 <div class="formula">
 \\[ f_s(\bold i, \bold o, \bold n)L_i
-   \lvert(\bold n \cdot \bold i)
-   (\bold n \cdot \bold o)\rvert
+   \lvert(\bold n \cdot \bold i)\rvert
+   \lvert(\bold n \cdot \bold o)\rvert
    d\omega_i d\omega_o dA = 
    \underset{H^2(\bold n)}{\int} f_s^m(\bold i, \bold o, \bold m) L_i
-   \lvert(\bold m \cdot \bold i)
-   (\bold m \cdot \bold o)\rvert
+   \lvert(\bold m \cdot \bold i)\rvert
+   \lvert(\bold m \cdot \bold o)\rvert
    D G
    d\omega_i d\omega_o dA d\omega_m
 \\]
@@ -173,7 +173,7 @@ By equating \\((2)\\) and \\((3)\\) and noticing that \\(d\omega_i\\), \\(d\omeg
 ### Notes
 <a name="footnote1">1</a>: There are ongoing developments to add KaTeX support to Hugo's default markdown engine (goldmark). I'll update this post to use default engine when that functionality is available.
 
-<a name="footnote2">2</a>: KaTeX allows to use `$$`, `$$` pair as an alternative to `\\[`, `\\]`. I had to use $$ delimiter once in this post because `\\[`, `\\]` pair did not work for some reasons.
+<a name="footnote2">2</a>: KaTeX allows to use `$$`, `$$` pair as an alternative to `\\[`, `\\]`. I had to use $$ delimiter once in this post because `\\[`, `\\]` pair did not work for unknown reason.
 
 <a name="footnote3">3</a>: I guess Eric Heitz who wrote [impressive paper about scattering on microgeometry](http://jcgt.org/published/0003/02/03/paper.pdf) might know the answer.
 
