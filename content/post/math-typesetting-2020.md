@@ -32,7 +32,7 @@ This site (including this page) is an output of ***Hugo site generator***. Hugo 
 * `markup` - allows to set non-default markdown engine. We need this because the default engine does not support KaTeX yet. <sup>[1](#footnote1)</sup>
 * `enable_math` - custom property which enables KaTeX library on the current page (by default math is disabled)
 
-```
+```toml
 ---
 title: "Math Typesetting Test: Macrosurface BSDF Derivation"
 date: 2020-02-13T00:28:17+01:00
