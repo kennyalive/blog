@@ -101,10 +101,10 @@ Also, the equations below are mostly basic radiometric definitions. Some excelle
 
 ![reflection_macro](/math-test/reflection_macro.png#center)
 
-Let's start by calculating irradiance due to the light from solid angle \\(d\omega_i\\):
+Let's start by calculating irradiance due to the light from a solid angle \\(d\omega_i\\):
 \\[ dE =L_i d\omega_i \lvert(\bold n \cdot \bold i)\rvert \\]
 
-The amount of irradiance \\(dE\\) creates distribution of reflected and refracted light according to BSDF, specificially the outgoing radiance in the direction \\(\bold o \\) is:
+The amount of irradiance \\(dE\\) creates a distribution of reflected and refracted light according to BSDF, specifically the outgoing radiance in the direction \\(\bold o \\) is:
 \\[ dL_o = f_s(\bold i, \bold o, \bold n) dE \\]
 
 Having outgoing radiance we can compute the radiance exitance (another name with a nice retro tint is \\(\mathcal{radiosity}\\)) considering outgoing light in a solid angle \\(d\omega_o\\):
