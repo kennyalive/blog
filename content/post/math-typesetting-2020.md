@@ -121,7 +121,7 @@ Outgoing flux from the differential surface area \\(dA\\):
 ###### b) Flux computation according to microsurface BSDF \\(f_s^m\\)
 
 ![reflection_micro](/math-test/reflection_micro.png#center)
-The surface can be viewed as a collection of facets of different orientations. At first, we will compute outgoing flux from the facets that have the same orientation \\(\bold m\\) (to be more precise, there are zero facets with some specific orientation, and we implicitly assume some infinitesimal deviation \\(\pm d \bold m\\) is okay). Then the total flux is an integral over all possible facet orientations. All quantities that are computed for a subset of facets with normal \\(\bold m \\) are provided with the corresponding subscript.
+The surface can be viewed as a collection of facets of different orientations. At first, we will compute outgoing flux from the facets that have the same orientation \\(\bold m\\) (to be more precise, there are zero facets with some specific orientation, and we implicitly assume that infinitesimal deviation \\(\pm d \bold m\\) is okay). Then the total flux is an integral over all possible facet orientations. All quantities that are computed for a subset of facets with normal \\(\bold m \\) are provided with the corresponding subscript.
 
 Irradiance, outgoing radiance and \\(\mathcal{radiosity}\\) are computed identically to macrosurface case with a difference that we use facet's normal \\(\bold m\\) instead of \\(\bold n \\) and microsurface BSDF \\(f_s^m\\) instead of \\(f_s\\):
 \\[ dE_m = L_i d\omega_i \lvert(\bold m \cdot \bold i)\rvert \\]
