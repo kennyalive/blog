@@ -173,7 +173,7 @@ By equating \\((2)\\) and \\((3)\\) and noticing that \\(d\omega_i\\), \\(d\omeg
 ![wink](/math-test/wink.png#center)
 
 ### Notes
-<a name="footnote0">0</a>. Matt Pettineo's [Hello, Hugo](https://therealmjp.github.io/posts/hello-hugo/) post where he confirmed that it's possible to use math with Hugo, helped with a decision to start revamping my own site.
+<a name="footnote0">0</a>. Matt Pettineo's [Hello, Hugo](https://therealmjp.github.io/posts/hello-hugo/) post where he confirmed that it's possible to use math with Hugo helped with a decision to start revamping my own site.
 
 <a name="footnote1">1</a>. There are ongoing developments to add KaTeX support to Hugo's default markdown engine (goldmark). I'll update this post to use the default engine when that functionality is available.
 
