@@ -33,12 +33,12 @@ This site (including this page) is an output of ***Hugo site generator***. Hugo 
 * `enable_math` - custom property which enables KaTeX library on the current page (by default math is disabled)
 
 ```toml
----
-title: "Math Typesetting Test: Macrosurface BSDF Derivation"
-date: 2020-02-13T00:28:17+01:00
-markup: mmark
-enable_math: true
----
+  ---
+  title: "Math Typesetting Test: Macrosurface BSDF Derivation"
+  date: 2020-02-13T00:28:17+01:00
+  markup: mmark
+  enable_math: true
+  ---
 ```
 
 ### Math notation
