@@ -61,6 +61,8 @@ As shown above, basic arithmetic actions have a natural syntax. Here is a list o
 
 The full list of supported \\(\TeX\\) functions can be found in [KaTeX Documentation](https://katex.org/docs/supported.html)
 
+We finished with the typesetting part. Let's proceed to the BSDF formula part.
+
 ### Macrosurface BSDF integral derivation
 According to the microfacet model, the surface has a microstructure (black outline) that determines the surface's reflectance properties. Those details are small, and for an ordinary person, the surface still looks nice and smooth (green outline) :
 ![microsurface](/math-test/microsurface.png#center)
