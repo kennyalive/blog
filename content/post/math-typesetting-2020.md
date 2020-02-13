@@ -67,7 +67,7 @@ We finished with the typesetting part. Let's proceed to the BSDF formula part.
 According to the microfacet model, the surface has a microstructure (black outline) that determines the surface's reflectance properties. Those details are small, and for an ordinary person, the surface still looks nice and smooth (green outline) :
 ![microsurface](/math-test/microsurface.png#center)
 
-In the well known-computer graphics paper *"Microfacet Models for Refraction through Rough Surfaces"* (Walter et al. 2007) there is a formula that shows the relationship between microsurface and macrosurface BSDFs:
+In the well-known computer graphics paper *"Microfacet Models for Refraction through Rough Surfaces"* (Walter et al. 2007) there is a formula that shows the relationship between microsurface and macrosurface BSDFs:
 <div class="formula">
 \\[ \tag{1} f_s(\bold i, \bold o, \bold n) = 
    \underset{H^2(\bold n)}{\int} \bigg| \frac{\bold i \cdot \bold m }{\bold i \cdot \bold n} \bigg|
