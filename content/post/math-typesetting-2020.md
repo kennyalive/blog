@@ -5,7 +5,7 @@ markup: mmark
 enable_math: true
 ---
 
-Some time ago I made a derivation of the known formula from the microfacet theory that shows how the reflectance properties of the surface depend on the reflectance properties of the small facets that form the surface. That work was done on paper. Now I decided to learn how to typeset math formulas in a digital form.
+Some time ago I made a derivation of the known formula from the microfacet theory that shows how the reflectance properties of the surface depend on the reflectance properties of the small facets that form the surface. That work was done on paper. Now I decided to learn how to typeset math formulas in a digital form<sup>[0](#footnote0)</sup>. 
 This post will repeat the derivation with the help of contemporary software where some parts of the technology can be traced back to the late 70's of the previous century.
 
 As of 2020 the \\(\TeX\\) typesetting language is quite popular. It provides a markup language rich enough to write even the complex multi-volume book but we are mostly interested in a math subset of \\(\TeX\\). There are few options how to expose it on the web. \\(\KaTeX\\) JavaScript library is a solution that is used here. Another good option is the *MathJax* library.
@@ -172,6 +172,8 @@ By equating \\((2)\\) and \\((3)\\) and noticing that \\(d\omega_i\\), \\(d\omeg
 ![wink](/math-test/wink.png#center)
 
 ### Notes
+<a name="footnote0">0</a>. Matt Pettineo's [Hello, Hugo](https://therealmjp.github.io/posts/hello-hugo/) post where he confirmed that it's possible to use math with Hugo, helped with a decision to start revamping my own site.
+
 <a name="footnote1">1</a>. There are ongoing developments to add KaTeX support to Hugo's default markdown engine (goldmark). I'll update this post to use default engine when that functionality is available.
 
 <a name="footnote2">2</a>. KaTeX allows to use `$$`, `$$` pair as an alternative to `\\[`, `\\]`. I had to use $$ delimiter once in this post because `\\[`, `\\]` pair did not work for unknown reason.
