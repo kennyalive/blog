@@ -181,7 +181,7 @@ By equating \\((2)\\) and \\((3)\\) and noticing that \\(d\omega_i\\), \\(d\omeg
 
 <a name="footnote4">4</a>. Radiometric quantities in computer graphics:
 * Awesome and free **[PBRT book](http://www.pbr-book.org/3ed-2018/Color_and_Radiometry/Radiometry.html)**, 3rd edition, section 5.4.
-* *Advanced Global Illumination* by Philip Dutre et al., 2nd edition, section 2.3. The first five chapters of this book is probably my favourite introduction to light transport theory.
+* *Advanced Global Illumination* by Philip Dutre et al., 2nd edition, section 2.3. The first five chapters of this book are probably my favorite introduction to light transport theory.
 * [Veach's thesis] (https://graphics.stanford.edu/papers/veach_thesis/thesis-bw.pdf), sections 3.4-3.5.
 
 Attribution: the free wink icon is from `freepngimg.com` site.
