@@ -110,7 +110,7 @@ The amount of irradiance \\(dE\\) creates a distribution of reflected and refrac
 Having outgoing radiance we can compute the radiance exitance (another name with a nice retro tint is \\(\mathcal{radiosity}\\)) considering outgoing light in a solid angle \\(d\omega_o\\):
 \\[ dM = dL_o d\omega_o \lvert(\bold n \cdot \bold o)\rvert \\]
 
-Outgoing flux from differential surface area \\(dA\\):
+Outgoing flux from the differential surface area \\(dA\\):
 \\[ \tag{2} d\Phi = dMdA = f_s(\bold i, \bold o, \bold n)L_i
    \lvert(\bold n \cdot \bold i)\rvert
    \lvert(\bold n \cdot \bold o)\rvert
@@ -119,7 +119,7 @@ Outgoing flux from differential surface area \\(dA\\):
 ###### b) Flux computation according to microsurface BSDF \\(f_s^m\\)
 
 ![reflection_micro](/math-test/reflection_micro.png#center)
-The surface can be viewed as a collection of facets of different orientation. At first we will compute outgoing flux from the facets that have the same orientation \\(\bold m\\) (to be more precise there are zero facets with some specific orientation and we implicitly assume some infinitesimal deviation \\(\pm d \bold m\\) is okay). Then the total flux is an integral over all possible facet orientations. All quantities that are computed for a subset of facets with normal \\(\bold m \\) are provided with corresponding subscript.
+The surface can be viewed as a collection of facets of different orientations. At first, we will compute outgoing flux from the facets that have the same orientation \\(\bold m\\) (to be more precise, there are zero facets with some specific orientation, and we implicitly assume some infinitesimal deviation \\(\pm d \bold m\\) is okay). Then the total flux is an integral over all possible facet orientations. All quantities that are computed for a subset of facets with normal \\(\bold m \\) are provided with the corresponding subscript.
 
 Irradiance, outgoing radiance and \\(\mathcal{radiosity}\\) are computed identically to macrosurface case with a difference that we use facet's normal \\(\bold m\\) instead of \\(\bold n \\) and microsurface BSDF \\(f_s^m\\) instead of \\(f_s\\):
 \\[ dE_m = L_i d\omega_i \lvert(\bold m \cdot \bold i)\rvert \\]
@@ -173,7 +173,7 @@ By equating \\((2)\\) and \\((3)\\) and noticing that \\(d\omega_i\\), \\(d\omeg
 ### Notes
 <a name="footnote0">0</a>. Matt Pettineo's [Hello, Hugo](https://therealmjp.github.io/posts/hello-hugo/) post where he confirmed that it's possible to use math with Hugo, helped with a decision to start revamping my own site.
 
-<a name="footnote1">1</a>. There are ongoing developments to add KaTeX support to Hugo's default markdown engine (goldmark). I'll update this post to use default engine when that functionality is available.
+<a name="footnote1">1</a>. There are ongoing developments to add KaTeX support to Hugo's default markdown engine (goldmark). I'll update this post to use the default engine when that functionality is available.
 
 <a name="footnote2">2</a>. KaTeX allows to use `$$`, `$$` pair as an alternative to `\\[`, `\\]`. I had to use $$ delimiter once in this post because `\\[`, `\\]` pair did not work for unknown reason.
 
