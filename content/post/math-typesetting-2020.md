@@ -27,9 +27,9 @@ This site (including this page) is an output of ***Hugo site generator***. Hugo 
   </head>
 ```
 
-***Content metadata***. The markdown documents consumed by Hugo should begin with a front matter section that defines a metadata associated with a document. I had to add the following two properties to enable usage of the KaTex library:
+***Content metadata***. The markdown documents consumed by Hugo should begin with a front matter section that defines metadata associated with a document. I had to add the following two properties to enable usage of the KaTex library:
 * `markup` - allows to set non-default markdown engine. We need this because the default engine does not support KaTeX yet. <sup>[1](#footnote1)</sup>
-* `enable_math` - custom property which enables KaTeX library on the current page (by default math is disabled)
+* `enable_math` - a custom property which enables KaTeX library on the current page (by default math is disabled)
 
 ```toml
   ---
