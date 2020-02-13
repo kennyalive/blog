@@ -5,12 +5,11 @@ markup: mmark
 enable_math: true
 ---
 
-Some time ago I made a derivation of the known formula from the microfacet theory that shows how the reflectance properties of the surface depend on the reflectance properties of the small facets that form the surface. That work was done on paper. Now I decided to learn how to typeset math formulas in a digital form<sup>[0](#footnote0)</sup>. 
-This post will repeat the derivation with the help of contemporary software where some parts of the technology can be traced back to the late 70's of the previous century.
+Some time ago, I made a derivation of the known formula from the microfacet theory that shows how the reflectance properties of the surface depend on the reflectance properties of the small facets that form the surface. That work was done on paper. Now I decided to learn how to typeset math formulas in a digital form<sup>[0](#footnote0)</sup>. This post will repeat the derivation with the help of contemporary software, where some parts of the technology can be traced back to the late '70s of the previous century.
 
-As of 2020 the \\(\TeX\\) typesetting language is quite popular. It provides a markup language rich enough to write even the complex multi-volume book but we are mostly interested in a math subset of \\(\TeX\\). There are few options how to expose it on the web. \\(\KaTeX\\) JavaScript library is a solution that is used here. Another good option is the *MathJax* library.
+As of 2020, the \\(\TeX\\) typesetting language is quite popular. It provides a markup language rich enough to write even the complex multi-volume book, but we are mostly interested in a math subset of \\(\TeX\\). There are few options on how to expose it on the web. I used \\(\KaTeX\\) JavaScript library. Another good option is the *MathJax* library.
 
-At first, I will describe software configuration that makes my site math-friendly. Then, a few examples of the \\(\TeX\\) math notation will be provided. The last part is computer graphics related where we will play with radiometric quantities to get the desired relationship.
+At first, I will describe the software configuration that makes my site math-friendly. Then, I will provide a few examples of the \\(\TeX\\) math notation. The last part is computer graphics related, where we will play with radiometric quantities to get the desired relationship.
 
 ### Software configuration
 
