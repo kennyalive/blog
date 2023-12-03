@@ -1,7 +1,6 @@
 ---
 title: "Math Typesetting Test: Macrosurface BSDF Derivation"
 date: 2020-02-13T00:28:17+01:00
-markup: mmark
 enable_math: true
 ---
 
@@ -48,15 +47,24 @@ This site (including this page) is an output of ***Hugo site generator***. Hugo 
 
 As shown above, basic arithmetic actions have a natural syntax. Here is a list of additional operations that I used in BSDF derivation:
 
-`\int`\\(\dashrightarrow \int\\) \\
-`\underset{X}{\int}` \\(\dashrightarrow \underset{X}{\int}\\) \\
-`a \cdot b`  \\(\dashrightarrow a \cdot b \\) \\
-`x^2` \\(\dashrightarrow x^2 \\) \\
-`x_i` \\(\dashrightarrow x_i \\) \\
-`x_i^2` \\(\dashrightarrow x_i^2\\) \\
-`\frac{a}{b}` \\(\dashrightarrow \frac{a}{b}\\) \\
-`\Phi` \\(\dashrightarrow \Phi\\) \\
-`\bold a` \\(\dashrightarrow \bold a\\) \\
+`\int`\\(\dashrightarrow \int\\)
+
+`\underset{X}{\int}` \\(\dashrightarrow \underset{X}{\int}\\)
+
+`a \cdot b`  \\(\dashrightarrow a \cdot b \\)
+
+`x^2` \\(\dashrightarrow x^2 \\)
+
+`x_i` \\(\dashrightarrow x_i \\)
+
+`x_i^2` \\(\dashrightarrow x_i^2\\)
+
+`\frac{a}{b}` \\(\dashrightarrow \frac{a}{b}\\)
+
+`\Phi` \\(\dashrightarrow \Phi\\)
+
+`\bold a` \\(\dashrightarrow \bold a\\)
+
 `\bigg|` \\(\dashrightarrow \bigg| \\)
 
 The full list of supported \\(\TeX\\) functions can be found in [KaTeX Documentation](https://katex.org/docs/supported.html)
