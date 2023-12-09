@@ -4,7 +4,7 @@ date: 2020-02-13T00:28:17+01:00
 enable_math: true
 ---
 
-Some time ago, I made a derivation of the known formula from the microfacet theory that shows how the reflectance properties of the surface depend on the reflectance properties of the small facets that form the surface. That work was done on paper. Now I decided to learn how to typeset math formulas in a digital form<sup>[0](#footnote0)</sup>. This post will repeat the derivation with the help of contemporary software, where some parts of the technology can be traced back to the late '70s of the previous century.
+Some time ago, I made a derivation of the known formula from the microfacet theory that shows how the reflectance properties of the surface depend on the reflectance properties of the small facets that form the surface. That work was done on paper. Now I decided to learn how to typeset math formulas in a digital form[^1]. This post will repeat the derivation with the help of contemporary software, where some parts of the technology can be traced back to the late '70s of the previous century.
 
 As of 2020, the \\(\TeX\\) typesetting language is quite popular. It provides a markup language rich enough to write even the complex multi-volume book, but we are mostly interested in a math subset of \\(\TeX\\). There are few options on how to expose it on the web. I used \\(\KaTeX\\) JavaScript library. Another good option is the *MathJax* library.
 
@@ -27,7 +27,7 @@ This site (including this page) is an output of ***Hugo site generator***. Hugo 
 ```
 
 ***Content metadata***. The markdown documents consumed by Hugo should begin with a front matter section that defines metadata associated with a document. I had to add the following two properties to enable usage of the KaTex library:
-* `markup` - allows to set non-default markdown engine. We need this because the default engine does not support KaTeX yet. <sup>[1](#footnote1)</sup>
+* `markup` - allows to set non-default markdown engine. We need this because the default engine does not support KaTeX yet. [^2]
 * `enable_math` - a custom property which enables KaTeX library on the current page (by default math is disabled)
 
 ```toml
@@ -43,7 +43,7 @@ This site (including this page) is an output of ***Hugo site generator***. Hugo 
 \\(\KaTeX\\) determines which parts of the document contain math by looking for the delimiters that surround the math snippets. There are two math rendering modes, and each one is defined by a different pair of delimiters.
 * *Inline mode* delimiters: `\\(` and `\\)`. In inline mode, the math formula  won't break the line, for example, here is the assignment \\(a=b+c\\) in the middle of this line produced by `\\(a=b+c\\)`
 
-* *Display mode* delimiters: `\\[` and `\\]` <sup>[2](#footnote2)</sup>. In display mode the formula adds a line break. Here is the output of `\\[a=b+c\\]` markup: \\[a = b + c\\]
+* *Display mode* delimiters: `\\[` and `\\]` [^3]. In display mode the formula adds a line break. Here is the output of `\\[a=b+c\\]` markup: \\[a = b + c\\]
 
 As shown above, basic arithmetic actions have a natural syntax. Here is a list of additional operations that I used in BSDF derivation:
 
@@ -76,14 +76,12 @@ According to the microfacet model, the surface has a microstructure (black outli
 ![microsurface](/math-test/microsurface.png#center)
 
 In the well-known computer graphics paper *"Microfacet Models for Refraction through Rough Surfaces"* (Walter et al. 2007) there is a formula that shows the relationship between microsurface and macrosurface BSDFs:
-<div class="formula">
 \\[ \tag{1} f_s(\bold i, \bold o, \bold n) = 
    \underset{H^2(\bold n)}{\int} \bigg| \frac{\bold i \cdot \bold m }{\bold i \cdot \bold n} \bigg|
    f_s^m(\bold i, \bold o, \bold m)
    \bigg| \frac{\bold o \cdot \bold m }{\bold o \cdot \bold n} \bigg|
    G(\bold i, \bold o, \bold m) D(\bold m) d\omega_m
 \\]
-</div>
 
 The symbols have the following meaning:
 * \\(f_s\\) and \\(f_s^m\\) are the macrosurface and the microsurface BSDFs
@@ -99,13 +97,13 @@ The above equation may look a bit academic, and you won't meet it too often in p
    {4\lvert|\bold i \cdot \bold n\rvert \lvert|\bold o \cdot \bold n\rvert}
  \\]
 
- But! The truth is that \\((shiny)\\) and \\((1)\\) are in close relation with one another. You can get \\((shiny)\\) if you put \\(f_s^m\\) = Mirror_BRDF into \\((1)\\). Even more, you can put \\((shiny)\\) itself into \\((1)\\) but it's hard to imagine what happens in that case <sup>[3](#footnote3)</sup>. Another bold idea is to assume that \\(f_s^m\\) is a Lambertian reflector, but that's starting to look like a rocket (moon?) science... The point is that \\((1)\\) is an important equation, and it could be an interesting exercise to get it from the basic principles.
+ But! The truth is that \\((shiny)\\) and \\((1)\\) are in close relation with one another. You can get \\((shiny)\\) if you put \\(f_s^m\\) = Mirror_BRDF into \\((1)\\). Even more, you can put \\((shiny)\\) itself into \\((1)\\) but it's hard to imagine what happens in that case [^4]. Another bold idea is to assume that \\(f_s^m\\) is a Lambertian reflector, but that's starting to look like a rocket (moon?) science... The point is that \\((1)\\) is an important equation, and it could be an interesting exercise to get it from the basic principles.
 
 We can obtain formula \\((1)\\) by computing the *radiant flux* due to reflected or refracted light. The radiant flux is how the *power* is called in radiometry, i.e., the amount of energy the light carries through the region of space per unit time. We are going to compute the same flux quantity in two different ways, by using macrosurface and microsurface representations correspondingly. Then we can get \\((1)\\) by equating both results.
 
 The wavelength dependency of radiometric quantities is omitted for simplicity. In the calculations that follow we observe the incoming and outgoing light in a narrow set a directions defined by the differential solid angles \\(d\omega_i\\) and \\(d\omega_o\\) correspondingly, which also define directions \\(\bold i\\) and \\(\bold o\\).
 
-Also, the equations below are mostly basic radiometric definitions. Some excellent resources that introduce these concepts are listed at the bottom of this page <sup>[4](#footnote4)</sup>
+Also, the equations below are mostly basic radiometric definitions. Some excellent resources that introduce these concepts are listed at the bottom of this page [^5]
 
 ###### a) Flux computation according to macrosurface BSDF \\(f_s\\)
 
@@ -156,7 +154,6 @@ Total flux is computed by considering all facets (integration domain is a hemisp
 ###### c) Getting the result
 
 By equating \\((2)\\) and \\((3)\\) and noticing that \\(d\omega_i\\), \\(d\omega_o\\), \\(dA\\) and \\(L_i\\) do not depend on the integration domain we get the desired result:
-<div class="formula">
 \\[ f_s(\bold i, \bold o, \bold n)L_i
    \lvert(\bold n \cdot \bold i)\rvert
    \lvert(\bold n \cdot \bold o)\rvert
@@ -167,29 +164,26 @@ By equating \\((2)\\) and \\((3)\\) and noticing that \\(d\omega_i\\), \\(d\omeg
    D G
    d\omega_i d\omega_o dA d\omega_m
 \\]
-</div>
 \\[\Downarrow\\]
-<div class="formula">
 \\[ f_s(\bold i, \bold o, \bold n) = 
    \underset{H^2(\bold n)}{\int} \bigg| \frac{\bold i \cdot \bold m }{\bold i \cdot \bold n} \bigg|
    f_s^m(\bold i, \bold o, \bold m)
    \bigg| \frac{\bold o \cdot \bold m }{\bold o \cdot \bold n} \bigg|
    G(\bold i, \bold o, \bold m) D(\bold m) d\omega_m
 \\]
-</div>
 
 ![wink](/math-test/wink.png#center)
 
 ### Notes
-<a name="footnote0">0</a>. Matt Pettineo's [Hello, Hugo](https://therealmjp.github.io/posts/hello-hugo/) post where he confirmed that it's possible to use math with Hugo helped with a decision to start revamping my own site.
+[^1]: Matt Pettineo's [Hello, Hugo](https://therealmjp.github.io/posts/hello-hugo/) post where he confirmed that it's possible to use math with Hugo helped with a decision to start revamping my own site.
 
-<a name="footnote1">1</a>. There are ongoing developments to add KaTeX support to Hugo's default markdown engine (goldmark). I'll update this post to use the default engine when that functionality is available.
+[^2]: There are ongoing developments to add KaTeX support to Hugo's default markdown engine (goldmark). I'll update this post to use the default engine when that functionality is available.
 
-<a name="footnote2">2</a>. KaTeX allows to use `$$`, `$$` pair as an alternative to `\\[`, `\\]`. I had to use $$ delimiter once in this post because `\\[`, `\\]` pair did not work for unknown reason.
+[^3]: KaTeX allows to use `$$`, `$$` pair as an alternative to `\\[`, `\\]`. I had to use $$ delimiter once in this post because `\\[`, `\\]` pair did not work for unknown reason.
 
-<a name="footnote3">3</a>. I guess Eric Heitz who wrote [impressive paper about scattering on microgeometry](http://jcgt.org/published/0003/02/03/paper.pdf) might know the answer.
+[^4]: I guess Eric Heitz who wrote [impressive paper about scattering on microgeometry](http://jcgt.org/published/0003/02/03/paper.pdf) might know the answer.
 
-<a name="footnote4">4</a>. Radiometric quantities in computer graphics:
+[^5]: Radiometric quantities in computer graphics:
 * Awesome and free **[PBRT book](http://www.pbr-book.org/3ed-2018/Color_and_Radiometry/Radiometry.html)**, 3rd edition, section 5.4.
 * *Advanced Global Illumination* by Philip Dutre et al., 2nd edition, section 2.3. The first five chapters of this book are probably my favorite introduction to light transport theory.
 * [Veach's thesis] (https://graphics.stanford.edu/papers/veach_thesis/thesis-bw.pdf), sections 3.4-3.5.
