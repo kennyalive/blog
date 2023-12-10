@@ -143,9 +143,8 @@ where \\(d\omega_m\\) is the differential solid angle oriented along \\(\bold m\
 \\[ d\Phi_m = dM_mdA_m \\]
 
 Total flux is computed by considering all facets (integration domain is a hemisphere around macrosurface normal \\(\bold n\\)):
-\\[ \tag{3} d\Phi = \underset{H^2(\bold n)}{\int} d\Phi_m d\omega_m
-   \newline
-   = \underset{H^2(\bold n)}{\int} f_s^m(\bold i, \bold o, \bold m) L_i
+\\[ d\Phi = \underset{H^2(\bold n)}{\int} d\Phi_m d\omega_m \\]
+\\[ \tag{3}  = \underset{H^2(\bold n)}{\int} f_s^m(\bold i, \bold o, \bold m) L_i
    \lvert(\bold m \cdot \bold i)\rvert
    \lvert(\bold m \cdot \bold o)\rvert
    D G
