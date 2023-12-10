@@ -1,6 +1,6 @@
 baseURL = "https://kennyalive.com/"
 languageCode = "en-us"
-title = "Artem Kharytoniuk's blog"
+title = "Artem Kharytoniuk's web page"
 theme = "nofancy"
 [markup]
   [markup.highlight]
