@@ -1,1 +1,1 @@
-hugo server -b http://localhost:1313/
+hugo server -b http://localhost:1313/ %*

@@ -6,3 +6,6 @@ draft: true
 
 * Write why it's correct to apply MIS at the end of generated path generated
 by local path sampling algorithm.
+
+* Write about what does it mean "return 0" from some bsdf sampling routines
+
