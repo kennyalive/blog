@@ -3,18 +3,16 @@ title: "My 20-Year-Old Program"
 date: 2024-02-02T14:00:49+01:00
 ---
 
-*Dedicated to my friend Volodymyr, who has a birthday today. I almost forgot about it but remembered when I wrote the publish date for this post.*
+*Dedicated to my friend Volodymyr, who has a birthday today. I almost forgot about it, but I remembered when I wrote the publish date for this post. Years ago, Volodymyr wrote a ray tracer compatible with the original pbrt. All functionality in that ray tracer was covered with tests. I never saw another ray tracer project that was so serious about test code. Volodymyr is included in the acknowledgments section of every pbrt book, starting with pbrt2.*
 
 ### Archive
 
 ![map2bsp program](/20-year-program/map2bsp.png)
 *map2bsp program generates BSP trees*
 
-I checked the archive of my old hobby projects. These are not very complex programs but also not trivial ones. Most of the projects I can build with modern compiler without issues. Then, one program passed compilation but failed the linking stage because the linker did not like old library binary. Another project caused a build failure because of a missing MFC component in my Visual Studio installation.
+I checked the archive of my old hobby projects. The complexity of the programs measured in lines of code is between 2K and 8K LOC, depending on the program. I can build most of them with a modern compiler. Then, one program passed compilation but failed the linking stage because the linker did not like the old 3rd party binary. Luckily, the project included the source code of that library. Rebuilding it fixed the issue. Another project failed to initiate the build because of a missing MFC component in my Visual Studio installation. I had to enable it through the installer to make things work.
 
-Most of these programs use only C++ and Win32 API. The latter has good backward compatibility. The prebuild executable made two decades ago runs just fine. The program that failed to link with the old static library includes the source code of that library. I'm happy I added it to the project tree. Rebuilding that library fixed the issue. Then I added MFC component to my VS installation and this allowed me to build the second program. I’d say that the programs are in good shape, assuming that I did not touch some of them for around 2 decades and that a few issues I had were easy local fixes. Although I took some steps to ensure that programs were more or less self-sufficient, I  did not think much about this aspect when I wrote them.
-
-The rest of this write-up is about code written not by me in my programs.
+I would say the programs are in good shape, assuming that I did not touch some of them for around 2 decades and that a few issues I had were easy to fix. Although I took some steps to ensure that programs were more or less self-sufficient, I did not think a lot about this aspect when I wrote them.
 
 ![my hammer editor](/20-year-program/hammer-demo.jpg)
 *Hammer program is an editor to build doom-style maps (not related to Valve's Hammer editor)*
@@ -39,11 +37,11 @@ I think package managers and online code repositories work well as standard plac
 
 What I'm less happy about is when these systems are not only used to deliver the code to your computer but, in a sense, increasingly become part of your program. This directly affects your software. Businesses have dedicated resources to participate in this networking. But for my personal projects, I want to focus on implementing my todo list. And to minimize occasions when I must react to external events.
 
-I wish the existing systems were less assertive about what you should do with a source code you get from the internet. A popular model nowadays is that your program does not contain the source code of external libraries and downloads them as part of the build process. Other models go out of flavor and, in general, are frowned upon.
+I wish the existing systems were less assertive about what you should do with a source code you get from the internet. A popular model nowadays is that your program does not contain the source code of external libraries and downloads them as part of the build process. Other models go out of favor and, in general, are frowned upon.
 
 The plan for my recent trip was to do some work during the flight. Earlier, I synced the project and initiated the build, which downloaded and built the dependencies so subsequent builds could work offline. It worked, and I made good progress. But not on the way back. At some point, I missed the key (economy class, you know) and maybe initiated a build clean-up or something similar. The full rebuild tried to fetch dependencies from the internet, and that's one example of how this does not work.
 
-For the long-term survivability of the program, dependency on the external source is a weak link, even with a stable network connection. github.com is a popular place. Arguably, it is the biggest code site in the world, and it is a shame that it has this name. Not everyone likes git (I do); why not come up with a more inclusive name? If Microsoft buys *code.com* domain for one billion dollars, I won’t be able to build my archived hobby projects that assume that github.com is a universal constant. Instead of enjoying playing with code, I will spend the evening fixing build scripts. Who wants such a life?
+For the long-term survivability of the program, dependency on the external source is a weak link, even with a stable network connection. *github.com* is a popular place. Arguably, it is the biggest code site in the world, and it is a shame that it has this name. Not everyone likes git (I do); why not come up with a more inclusive name? If Microsoft buys *code.com* domain for one billion dollars, I won’t be able to build my archived hobby projects that assume that *github.com* is a universal constant. Instead of enjoying playing with code, I will spend the evening fixing build scripts. Who wants such a life?
 
 ![q3fantasy program](/20-year-program/q3fantasy-demo.jpg)
 *Q3Fantasy program is a Quake3 map renderer written before Quake 3 source code was released in 2005. Does not support curved surfaces, and sky, and mirrors, and doors, and probably other features too. Linker error. I had to rebuild jpeg library which was bundled with the project. 20 minutes fix.*
@@ -55,5 +53,5 @@ For the long-term survivability of the program, dependency on the external sourc
 * Put the dependent library source code into the project tree and build it with the rest of the program.
 * Consider whether it can be an optional feature if a huge dependency is needed. For example, the project is always bundled with a compact GLTF library, but USD scene support is an external dependency, and the project can still be built without it if needed. You can then show pretty GLTF rendering for your grandchildren, but you definitely will be too old for USD.
 * If the large library is an integral part of the project, consider bundling it, too.
-* If you are forced to use the library as an external dependency, create software release distributions containing everything. That's one direction I hoped GitHub could be helpful because it provides a feature to create software releases. Unfortunately, it does not support including git submodules or other forms of dependencies in release distribution. Not helpful. AGAIN.
+* If you are forced to use the library as an external dependency, create software release distributions containing everything. That's one direction I hoped GitHub could be helpful because it provides a feature to create software releases. Unfortunately, it does not support including git submodules or other forms of dependencies in the release. Not helpful. AGAIN.
 * No need to update your dependencies on a daily basis. Focus on your todo list.
