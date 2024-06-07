@@ -4,13 +4,13 @@ date: 2020-02-13T00:28:17+01:00
 enable_math: true
 ---
 
-Some time ago, I made a derivation of the known formula from microfacet theory that shows how the reflectance properties of the surface depend on the reflectance properties of the facets that form the surface. That work was done on paper. Now, I decided to learn how to typeset math formulas in a digital form. This post will repeat the derivation. We will play with radiometric quantities to get the desired relationship.
+Some time ago, I derived a known formula from microfacet theory that shows how the reflectance properties of a surface depend on the reflectance properties of the facets that form the surface. That work was done on paper. Now, I have decided to learn how to typeset math formulas in digital form. This article will repeat the derivation.
 
-### Macrosurface BSDF integral derivation
+### Problem statement
 According to the microfacet model, the surface has a microstructure (black outline) that determines surface reflectance properties. Those details are small, and for an ordinary person, the surface still looks nice and smooth (green outline):
 ![microsurface](/math-test/microsurface.png#center)
 
-In the well-known computer graphics paper *"Microfacet Models for Refraction through Rough Surfaces"* (Walter et al. 2007) there is a formula that shows the relationship between microsurface and macrosurface BSDFs:
+In the influential paper *"Microfacet Models for Refraction through Rough Surfaces"* (Walter et al. 2007) there is a formula that shows the relationship between microsurface and macrosurface BSDFs:
 \\[ \tag{1} f_s(\bold i, \bold o, \bold n) = 
    \underset{H^2(\bold n)}{\int} \bigg| \frac{\bold i \cdot \bold m }{\bold i \cdot \bold n} \bigg|
    f_s^m(\bold i, \bold o, \bold m)
@@ -25,20 +25,20 @@ The symbols have the following meaning:
 * \\(\bold n\\)  and \\(\bold m\\) are the macrosurface and the microsurface normals
 * \\(H^2(\bold n)\\) denotes the hemisphere of directions above the given surface normal \\(\bold n\\).
 
-The above equation may look a bit academic, and you don't meet it too often comparing to this guy:
+The above equation may seem a bit academic, and you don't encounter it as often compared to this one:
 
 \\[ \tag{shiny} f_r(\bold i, \bold o, \bold n) = \frac
    {F(\bold i, \bold h_r) G(\bold i, \bold o, \bold h_r) D(\bold h_r)}
-   {4\lvert|\bold i \cdot \bold n\rvert \lvert|\bold o \cdot \bold n\rvert}
+   {4\lvert\bold i \cdot \bold n\rvert \lvert\bold o \cdot \bold n\rvert}
  \\]
 
- It turns out that \\((shiny)\\) and \\((1)\\) are closely related. You can get \\((shiny)\\) if you put \\(f_s^m\\) = Mirror_BRDF into \\((1)\\). Another idea is to use specular transmission brdf to derive macro brdf of the rough transmissive surface. The point is that \\((1)\\) is an important equation, and it could be an interesting exercise to get it from the basic principles.
+ It turns out that \\((shiny)\\) and \\((1)\\) are closely related. You can get \\((shiny)\\) if you put \\(f_s^m\\) = Mirror_BRDF into \\((1)\\). Another idea is to use specular transmission brdf to derive macro brdf of the rough transmissive surface. \\((1)\\) is an important equation, and it could be an interesting exercise to get it from the first principles.
 
-We can obtain formula \\((1)\\) by computing the *radiant flux* due to reflected or refracted light. The radiant flux is what the *power* is called in radiometry, i.e., the amount of energy the light carries through the region of space per unit time. We will compute the same flux quantity in two different ways by using macrosurface and microsurface representations correspondingly. Then, we can get \\((1)\\) by equating both results.
+We can obtain formula \\((1)\\) by computing the *radiant flux* due to reflected or refracted light. In radiometry, radiant flux refers to the *power*, meaning the amount of energy that light carries through a region of space per unit time. We will compute the same flux quantity in two different ways by using macrosurface and microsurface representations correspondingly. Then, we can get \\((1)\\) by equating both results.
 
 The wavelength dependency of radiometric quantities is omitted for simplicity. In the calculations that follow, we observe the incoming and outgoing light in a narrow set of directions defined by the differential solid angles \\(d\omega_i\\) and \\(d\omega_o\\) correspondingly, which also define directions \\(\bold i\\) and \\(\bold o\\).
 
-Also, the equations below are mostly basic radiometric definitions. Some excellent resources that introduce these concepts are listed at the end of this post. [^1]
+Also, the equations below are mostly basic radiometric definitions. Some excellent resources that introduce these concepts are listed at the end of this article. [^1]
 
 ###### a) Flux computation according to macrosurface BSDF \\(f_s\\)
 
