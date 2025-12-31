@@ -3,9 +3,7 @@ title: "The Cpu Works Somehow"
 date: 2025-12-28T10:30:15+02:00
 ---
 
-You can create a simple CPU by using a bunch of transistors to build logic gates (such as AND, OR, NAND, NOR, and NOT), then connecting those gates so they run actual logic and computations. However, I could not understand how these primitives can perform an addition operation with a latency of a single cycle.
-
-On a fundamental level, this was always a splinter in my mind: you know how CPUs operate at relatively low level - ISA, registers, caches, microarchitecture, but you still can't connect all of that to a simple addition. Even at a deeper level you know you couldn't build an electromechanical computer in a post-fab era if needed.
+You can create a simple CPU by using a bunch of transistors to build logic gates (such as AND, OR, NAND, NOR, and NOT), then connecting those gates so they run actual logic and computations. However, I could not understand how these primitives can perform an addition operation with a latency of a single cycle (something that modern CPUs do).
 
 ### Confusion
 
